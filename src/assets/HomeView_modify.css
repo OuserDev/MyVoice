@@ -37,7 +37,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* 오버레이 색상과 투명도 설정 */
+    background-color: rgba(0, 0, 0, 0.65); /* 오버레이 색상과 투명도 설정 */
   }
 
   .text-overlay {

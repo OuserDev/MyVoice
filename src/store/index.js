@@ -1,9 +1,10 @@
 import { createStore } from 'vuex'
+import {mapState} from 'vuex';
 
 export default createStore({
   state(){
 		return {
-			name: 'kim'
+			login_on: 0
 		}
 	},
   getters: {

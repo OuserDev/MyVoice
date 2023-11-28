@@ -1,8 +1,10 @@
 <template>
-  <div class="image-overlay-container"> 
+  <div class="image-overlay-container">
     <img src="@/assets/homeview_back.png" class="img-fluid full-width" alt="Responsive image" >
     <div class="image-dark-overlay"></div>
-</div>
+    <div class="text-overlay"><Animation/></div> 
+  </div>
+
   <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -128,9 +130,13 @@
 
 
 <script>
+import Animation from './Animation.vue';
+
 export default {
   name: "HomeView",
-  components: {},
+  components: {
+    Animation,
+  },
 };
 </script>
 

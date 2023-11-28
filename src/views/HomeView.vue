@@ -138,48 +138,7 @@ export default {
 
 
 <style>
-.carousel-item, .carousel-item svg {
-  height: 650px; /* 캐러셀의 높이를 원하는 높이로 설정 */
-}
-@media (max-width: 768px) {
-  .carousel-item, .carousel-item svg {
-    height: 500px; /* 반응형 구현을 위해 태블릿과 같은 중간 크기의 장치에 대한 높이 */
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-item, .carousel-item svg {
-    height: 400px; /* 반응형 구현을 위해 모바일과 같은 작은 장치에 대한 높이 */
-  }
-}
-
-.full-width { /* 상단 이미지의 너비를 뷰포트에 맞추기 위해 지정 */
-  width: 100vw; /* 뷰포트의 너비만큼 너비를 설정 */
-  height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
-  object-fit: cover; /* 이미지가 비율을 유지하면서 컨테이너를 채우도록 설정 */
-}
-
-.image-overlay-container {
-  position: relative;
-  overflow: hidden; /* 이미지가 컨테이너 밖으로 나가지 않도록 설정 */
-  height: 1100px; /* 원하는 높이로 설정 */
-}
-
-.img-fluid.full-width {
-  object-fit: cover; /* 이미지가 컨테이너에 맞춰서 자동으로 잘리도록 설정 */
-  width: 100% !important;
-  height: 100% !important; /* 이미지의 실제 높이를 컨테이너 높이에 맞춤 */
-}
-
-.image-dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 오버레이 색상과 투명도 설정 */
-}
-
+@import "@/assets/HomeView_modify.css";
 @import "@/assets/carousel.css";
 @import 'https://cdn.jsdelivr.net/npm/@docsearch/css@3';
 @import "https://getbootstrap.com/docs/5.3/examples/carousel/";

@@ -3,7 +3,7 @@
         <XyzTransition class="item-group" xyz="fade down-100% back-5" mode = "out-in">
         <div class="square" v-if=" message == 0">내 목소리로 된 아이유 노래를 듣고 싶다면 ?</div>
         <div class="square" v-if=" message == 1">남사친 사운드로 라디오를 듣고 싶다면 ?</div>
-        <div class="square" v-if=" message == 2">여자친구가 녹음한 것 같은 인강을 듣고 싶다면 ?</div>
+        <div class="square" v-if=" message == 2">내 최애 아이돌이 녹음한 것 같은 인강을 듣고 싶다면 ?</div>
         <div class="square" v-if=" message == 3">중요한 발표나 녹음을 연습하고 싶다면 ?</div>
         <div class="square" v-if=" message == 4"><p class="gradient-text" style="font-size: 2.5em">MyVoice</p></div>
         </XyzTransition>

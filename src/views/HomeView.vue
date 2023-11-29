@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="image-overlay-container">
     <img src="@/assets/homeview_back.png" class="img-fluid full-width" alt="Responsive image" >
     <div class="image-dark-overlay"></div>
@@ -20,7 +21,7 @@
           <div class="carousel-caption text-start ">
             <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
             <p class="opacity-75">MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Let's MV!</a></p>
+            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Let's MV!</a></p>
           </div>
         </div>
       </div>
@@ -30,7 +31,7 @@
           <div class="carousel-caption">
             <h1 class="fw-bold">색다른 경험을 시작해보세요!</h1>
             <p>AI XXX 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">자세히 보기</a></p>
+            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">자세히 보기</a></p>
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@
           <div class="carousel-caption text-end">
             <h1 class="fw-bold">어제 보다 더 나은 오늘을 위해.</h1>
             <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Contact</a></p>
+            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Contact</a></p>
           </div>
         </div>
       </div>
@@ -168,6 +169,7 @@
   </div>
     <!-- <hr class="featurette-divider"> -->
     <!-- /END THE FEATURETTES --><!-- /.container -->
+  </div>
 </template>
 
 
@@ -198,4 +200,13 @@ export default {
 @import 'https://cdn.jsdelivr.net/npm/@docsearch/css@3';
 @import "https://getbootstrap.com/docs/5.3/examples/carousel/";
 @import "https://getbootstrap.com/docs/5.3/examples/features/";
+a.my-custom-button {
+  background-color: #3a98cb; /* 원하는 배경 색상 */
+  border-color: #3a98cb; /* 원하는 테두리 색상 */
+}
+
+a.my-custom-button:hover {
+  background-color: #2c53a6; /* 마우스 오버 시 색상 */
+  border-color: #2c53a6;
+}
 </style>

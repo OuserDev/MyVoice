@@ -1,7 +1,12 @@
 <template>
   <Header />
+
   <div class="main-content">
-    <router-view/>
+    <router-view v-slot="{ Component }">
+      <transition name="slide-fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 
   <div class="login-content">
@@ -46,7 +51,6 @@ export default {
   z-index:1000;
 }
 
-
 #app {
   font-family: 'IBM Plex Sans KR', serif;
   -webkit-font-smoothing: antialiased;
@@ -54,4 +58,13 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all .3s ease;
+}
+.slide-fade-enter-from, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
 </style>

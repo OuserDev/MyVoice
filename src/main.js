@@ -10,6 +10,7 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import Vue3FormWizard from 'vue3-form-wizard'
+import 'vue3-form-wizard/dist/style.css'
 
-
-createApp(App).use(store).use(router).use(VueAnimXyz).mount('#app')
+createApp(App).use(store).use(router).use(VueAnimXyz).use(Vue3FormWizard).mount('#app')

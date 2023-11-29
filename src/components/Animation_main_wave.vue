@@ -1,131 +1,65 @@
 <template>
-<div class="container">
-    <div class="circle delay1"></div>
-    <div class="circle delay2"></div>
-    <div class="circle delay3"></div>
-    <div class="circle delay4"></div>
-</div>
+  <div id="bars" class="bars">
+    <!-- 각 막대를 반복해서 생성하고, 높이와 그라데이션 스타일을 적용합니다 -->
+    <div v-for="bar in bars" :key="bar.id" class="bar" :style="barStyle(bar.height)"></div>
+  </div>
 </template>
 
-<!-- appear - 초기 렌더링시, true로 하면 페이지 로드시 요소가 애니메이션과 함께 등장
-appear-visible - 요소가 뷰포트 내에 보일 때까지 시작을 지연시킴
-IntersectionObserver 옵션 - 동작 조절 가능 -->
-
 <script>
+export default {
+  data() {
+    return {
+      numBars: 35, // 막대의 수
+      bars: [], // 각 막대의 높이를 저장할 배열
+    };
+  },
+  methods: {
+    // 막대의 스타일을 계산하는 메서드입니다
+    barStyle(height) {
+      return {
+        width: '10px',
+        height: `${height}px`,
+        // 막대의 그라데이션을 설정합니다. 여기서는 검정색에서 투명으로 변하는 그라데이션을 적용합니다.
+        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,1))`,
+        marginRight: '2px',
+      };
+    },
+    // 막대의 높이를 랜덤하게 변경하는 메서드입니다
+    randomizeBarHeights() {
+      this.bars = this.bars.map(bar => ({
+        id: bar.id,
+        height: Math.random() * 150, // 0과 150px 사이의 랜덤한 높이를 생성합니다
+      }));
+    },
+  },
+  mounted() {
+    // 초기 막대의 ID와 높이를 설정합니다
+    for (let i = 0; i < this.numBars; i++) {
+      this.bars.push({
+        id: i,
+        height: Math.random() * 150,
+      });
+    }
+
+    // 매 150ms마다 막대의 높이를 랜덤하게 변경합니다
+    setInterval(this.randomizeBarHeights, 150);
+  },
+};
 </script>
 
 <style>
-.circle {
-  display: block;
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  background: #0194c7;
-  margin: 10px;
-  position: absolute;
-  top: 0px;
-  -webkit-animation: waves 2.5s linear infinite;
-          animation: waves 2.5s linear infinite;
+
+.bar {
+  display: inline-block;
+  transition: height 0.5s linear; 
 }
 
-.circle.delay1 {
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
+.bars {
+  display: flex;
+  justify-content: center; /* 가로축에 대해 중앙 정렬 */
+  align-items: flex-end;
+  margin: 0 auto; /* 상하 마진 없이, 좌우 마진 자동 */
+  width: 80%; /* 부모 요소의 너비에 대한 비율로 너비 설정 */
+  height: 150px; /* 막대의 최대 높이와 일치해야 합니다 */
 }
-.circle.delay2 {
-  -webkit-animation-delay: 0.7s;
-          animation-delay: 0.7s;
-}
-.circle.delay3 {
-  -webkit-animation-delay: 1.3s;
-          animation-delay: 1.3s;
-}
-.circle.delay4 {
-  -webkit-animation-delay: 1.9s;
-          animation-delay: 1.9s;
-}
-
-.svg-box {
-  position: relative;
-  z-index: 10;
-}
-
-.svg-box:hover {
-  -webkit-animation: bloop 1s linear;
-          animation: bloop 1s linear;
-}
-
-@-webkit-keyframes waves {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes bloop {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes waves {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2.3);
-    opacity: 0;
-  }
-}
-
-@keyframes bloop {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-
 </style>
-
-

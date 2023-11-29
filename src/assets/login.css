@@ -7,6 +7,13 @@
   font-family: "IBM Plex Sans KR", serif;
   font-weight: bolder;
 }
+.signup-page {
+  width: 500px;
+  padding: 8% 0 0;
+  margin: auto;
+  font-family: "IBM Plex Sans KR", serif;
+  font-weight: bolder;
+}
 .form {
   background: #ffffff;
   max-width: 500px;
@@ -46,7 +53,7 @@
 .form button:hover,
 .form button:active,
 .form button:focus {
-  background: #2c7ba6;
+  background: #2c53a6;
 }
 .form .message {
   margin: 15px 0 0;

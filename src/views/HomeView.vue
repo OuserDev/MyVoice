@@ -2,10 +2,12 @@
   <div class="image-overlay-container">
     <img src="@/assets/homeview_back.png" class="img-fluid full-width" alt="Responsive image" >
     <div class="image-dark-overlay"></div>
+    <div class="wave-overlay"><wave/></div> 
     <div class="text-overlay"><Animation/></div> 
   </div>
 
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- 캐러셀 -->
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -13,41 +15,41 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="@/assets/carousel1.jpg" class="d-block w-100" alt="...">
+        <img src="@/assets/logo/carousel1.jpg" class="d-block w-100" alt="...">
         <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>당신의 상상력을 펼쳐보세요!</h1>
-            <p class="opacity-75">MyVoice에서는 당신의 맞춤형 디지털 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+          <div class="carousel-caption text-start ">
+            <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
+            <p class="opacity-75">MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Let's MV!</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <img src="@/assets/logo/carousel2.jpg" class="d-block w-100" alt="...">
         <div class="container">
           <div class="carousel-caption">
-            <h1>색다른 경험을 시도해보세요!</h1>
+            <h1 class="fw-bold">색다른 경험을 시작해보세요!</h1>
             <p>AI XXX 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <p><a class="btn btn-lg btn-primary" href="#">자세히 보기</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <img src="@/assets/logo/carousel3.jpg" class="d-block w-100" alt="...">
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+            <h1 class="fw-bold">어제 보다 더 나은 오늘을 위해.</h1>
+            <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Contact</a></p>
           </div>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true">asdfasdfasdfasdf</span>
+    <button class="carousel-control-prev z-3" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <button class="carousel-control-next z-3" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -59,29 +61,29 @@
   
 
   <div class="container marketing">
-    <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">이런 분들에게 추천드려요!</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="container px-5 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom fw-bold h1">이런 분들에게 추천드려요!</h2>
+    <div class="row g-5 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
           <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
         </div>
-        <h3 class="fs-2 text-body-emphasis">학생 및 강의 수강생</h3>
-        <p>자신이 선호하는 목소리로 강의나 교재를 듣고자 하는 사람들</p>
+        <h3 class="fs-2 text-body-emphasis fw-bold">학생 및 강의 수강생</h3>
+        <p>본인이 좋아하는 목소리로 강의나<br>교재를 듣고자 하는 사람들</p>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+          <img class="z-2 bi" width="1em" height="1em" src="@/assets/logo/학생.png">
         </div>
-        <h3 class="fs-2 text-body-emphasis">노래, 음악 애호가</h3>
-        <p>자신의 목소리나 원하는 아티스트의 목소리로 노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
+        <h3 class="fs-2 text-body-emphasis fw-bold">노래, 음악 애호가</h3>
+        <p>자신의 목소리나 원하는 아티스트의 목소리로<br>노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
           <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
         </div>
-        <h3 class="fs-2 text-body-emphasis">예행 연습</h3>
-        <p>본인의 목소리를 직접 비교 및 활용하여 발표 및 녹음에 대한 예행 연습 과정을 준비하려는 사람들</p>
+        <h3 class="fs-2 text-body-emphasis fw-bold">예행 연습</h3>
+        <p>본인의 목소리를 직접 활용 및 비교하여<br>발표나 녹음의 예행 연습을 준비하려는 사람들</p>
       </div>
     </div>
   </div>
@@ -173,6 +175,7 @@
 
 <script>
 import Animation from '../components/Animation_main_text.vue';
+import wave from '../components/Animation_main_wave.vue';
 import nft from '../components/nft.vue';
 
 export default {
@@ -180,6 +183,7 @@ export default {
   components: {
     Animation,
     nft,
+    wave,
   },
 };
 </script>

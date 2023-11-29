@@ -26,8 +26,8 @@
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <h1>색다른 경험을 시도해보세요!</h1>
+            <p>AI XXX 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
             <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
           </div>
         </div>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="carousel-control-prev-icon" aria-hidden="true">asdfasdfasdfasdf</span>
       <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
@@ -53,12 +53,80 @@
     </button>
   </div>
 
-
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
+  
 
   <div class="container marketing">
+    <div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom">이런 분들에게 추천드려요!</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+        </div>
+        <h3 class="fs-2 text-body-emphasis">학생 및 강의 수강생</h3>
+        <p>자신이 선호하는 목소리로 강의나 교재를 듣고자 하는 사람들</p>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+        </div>
+        <h3 class="fs-2 text-body-emphasis">노래, 음악 애호가</h3>
+        <p>자신의 목소리나 원하는 아티스트의 목소리로 노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        </div>
+        <h3 class="fs-2 text-body-emphasis">예행 연습</h3>
+        <p>본인의 목소리를 직접 비교 및 활용하여 발표 및 녹음에 대한 예행 연습 과정을 준비하려는 사람들</p>
+      </div>
+    </div>
+  </div>
+  <div class="container px-4 py-5" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Hanging icons</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+          <a href="#" class="btn btn-primary">
+            Primary button
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+          <a href="#" class="btn btn-primary">
+            Primary button
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
+        </div>
+        <div>
+          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+          <a href="#" class="btn btn-primary">
+            Primary button
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
     <!-- START THE FEATURETTES -->
 
     <!-- <hr class="featurette-divider"> -->
@@ -85,7 +153,7 @@
     </div>
 
     <!-- <hr class="featurette-divider"> -->
-
+    <nft/>
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
@@ -105,11 +173,13 @@
 
 <script>
 import Animation from '../components/Animation_main_text.vue';
+import nft from '../components/nft.vue';
 
 export default {
   name: "HomeView",
   components: {
     Animation,
+    nft,
   },
 };
 </script>
@@ -118,8 +188,10 @@ export default {
 
 
 <style>
+@import "@/assets/features.css";
 @import "@/assets/HomeView_modify.css";
 @import "@/assets/carousel.css";
 @import 'https://cdn.jsdelivr.net/npm/@docsearch/css@3';
 @import "https://getbootstrap.com/docs/5.3/examples/carousel/";
+@import "https://getbootstrap.com/docs/5.3/examples/features/";
 </style>

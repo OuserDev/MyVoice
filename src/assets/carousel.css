@@ -19,6 +19,9 @@ body {
   z-index: 10;
 }
 
+.carousel-control-prev .carousel-control-next {
+  z-index: 10;
+}
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 100%;

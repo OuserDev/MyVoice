@@ -6,9 +6,9 @@
 
   <div class="login-content">
     <XyzTransition appear xyz="fade up-50% ease-on">
-      <Login v-if="login_on == 1"/>
+      <Login v-if="login_on == 0"/>
     </XyzTransition>
-  </div>  
+  </div>
 
   <Footer />
 </template>

@@ -1,0 +1,100 @@
+<template>
+    <div class="centered-carousel">
+    <Carousel :itemsToShow="3" :wrapAround="true" :autoplay="2000" :transition="500">
+      <Slide v-for="slide in 3" :key="slide">
+        <div class="carousel__item"><img :src="require(`@/assets/nft${slide}.jpg`)"></div>
+      </Slide>
+
+      <template #addons>
+      <Pagination />
+      <Navigation />
+    </template>
+    </Carousel>
+    </div>
+</template>
+  
+  <script>
+  import { defineComponent } from 'vue';
+  import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
+  import 'vue3-carousel/dist/carousel.css';
+  
+  export default defineComponent({
+    name: 'Autoplay',
+    data() {
+        return {
+            settings: {
+            itemsToShow: 1,
+            snapAlign: 'center',
+    },
+        }
+    },
+    components: {
+        Pagination,
+        Carousel,
+        Slide,
+        Navigation,
+    },
+  })
+  </script>
+  
+  <style>
+  .centered-carousel {
+  width: 700px;
+  margin: 0 auto;
+}
+
+  .carousel__pagination {
+    padding-left: 0px;
+  }
+
+  .carousel__slide {
+    padding: 20px;
+  }
+  
+  .carousel__viewport {
+    perspective: 2000px;
+
+    overflow: hidden;
+  }
+  
+  .carousel__track {
+    transform-style: preserve-3d;
+  }
+  
+  .carousel__slide--sliding {
+    transition: 0.5s;
+  }
+  
+  .carousel__slide {
+    opacity: 0.9;
+    transform: rotateY(-20deg) scale(0.9);
+  }
+  
+  .carousel__slide--active ~ .carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+  }
+  
+  .carousel__slide--prev {
+    opacity: 1;
+    transform: rotateY(-10deg) scale(0.9);
+  }
+  
+  .carousel__slide--next {
+    opacity: 1;
+    transform: rotateY(10deg) scale(0.9);
+  }
+  
+  .carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+  }
+
+  .carousel__icon {
+    fill: white;
+    width: 34px;
+    height: 34px;
+    }
+
+  
+  </style>
+  

@@ -100,7 +100,7 @@ export default {
 }
 
 .bd-mode-toggle {
-  z-index: 1500;
+  z-index: 150;
 }
 
 .bd-mode-toggle .dropdown-menu .active .bi {

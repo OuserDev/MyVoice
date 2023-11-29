@@ -6,7 +6,6 @@ body {
   color: rgb(var(--bs-tertiary-color-rgb));
 }
 
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -22,10 +21,40 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 32rem;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+.carousel-item::before {
+  content: ""; /* 가상 요소에는 content 속성이 필수 */
+  position: absolute; /* 가상 요소를 절대 위치로 설정 */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(45, 44, 44, 0.5); /* 어두운 투명도를 지닌 색상 설정 */
+  z-index: 2; /* 이미지 위에 오버레이가 오도록 z-index 설정 */
+}
 
+.carousel-item img {
+  height: 650px;
+  object-fit: cover;
+  width: 100%; /* 이미지가 부모 컨테이너의 전체 너비를 차지하도록 설정 */
+  position: relative; /* z-index가 작동하도록 position 설정 */
+  z-index: 1; /* 오버레이가 이미지 위에 오도록 이미지의 z-index를 낮게 설정 */
+}
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 500px; /* 중간 크기 장치에 대한 적절한 높이 */
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item img {
+    height: 400px; /* 작은 장치에 대한 적절한 높이 */
+  }
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 

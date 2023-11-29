@@ -5,7 +5,7 @@
   </div>
 
   <div class="login-content">
-    <XyzTransition appear xyz="fade up-100%">
+    <XyzTransition appear xyz="fade up-50% ease-on">
       <Login v-if="login_on == 1"/>
     </XyzTransition>
   </div>  
@@ -42,10 +42,7 @@ export default {
   position: fixed;
   z-index:1000;
 }
-.main-content {
-  position: relative;
-  z-index: 500; /* 로그인 컴포넌트보다 낮은 값 */
-}
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

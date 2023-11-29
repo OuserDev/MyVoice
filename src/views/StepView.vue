@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5 pt-5 mb-5 pb-5 ">
+    <div class="container mt-6 pt-5 mb-5 pb-5 ">
         <FormWizard @on-complete="onComplete" color="#3a98cb">
             <TabContent title="STEP 1. 목소리 데이터셋 선택" icon="fa fa-microphone">
                 <Dataset_select v-if="convert_status === 1"/>
@@ -55,5 +55,9 @@ export default {
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
+}
+
+.mt-6 {
+    margin-top: 4rem; /* 또는 원하는 크기 */
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark text-white">
+  <div class="bg-dark v">
   <div class="image-overlay-container">
     <img src="@/assets/homeview_back.png" class="img-fluid full-width" alt="Responsive image" >
     <div class="image-dark-overlay"></div>
@@ -40,7 +40,7 @@
         <div class="container">
           <div class="carousel-caption text-end">
             <h1 class="fw-bold">어제 보다 더 나은 오늘을 위해.</h1>
-            <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다.</p>
+            <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다</p>
             <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Contact</a></p>
           </div>
         </div>
@@ -61,48 +61,47 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
   
 
-  <div class="container marketing my-5">
+  <div class="container marketing mt-5">
     <div class="container px-5 pt-5 " id="featured-3">
-    <h2 class="pb-2 border-bottom fw-bold h1">이런 분들께 추천드려요!</h2>
+    <h2 class="pb-2 border-bottom fw-bold h1 text-white">이런 분들께 추천드려요!</h2>
     <div class="row g-5 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
-        <img style="width: 100px; height: 83px;" class="img-fluid rounded-circle" src="@/assets/logo/학생.png">
-        <h3 class="fs-2 text-body-emphasis fw-bold">학생 및 강의 수강생</h3>
-        <p>본인이 좋아하는 목소리로 강의나<br>교재를 듣고자 하는 사람들</p>
+        <img style="width: 90px; height: 90px;" class="img-fluid rounded-circle" src="@/assets/logo/학생.png">
+        <h3 class="fs-2 fw-bold text-white pt-3">학생 및 강의 수강생</h3>
+        <p class="text-white">본인이 좋아하는 목소리로 강의나<br>교재를 듣고자 하는 사람들</p>
       </div>
       <div class="feature col">
-        <img style="width: 83px; height: 83px;" src="@/assets/logo/아티스트.png">
-        <h3 class="fs-2 text-body-emphasis fw-bold">노래, 음악 애호가</h3>
-        <p>자신의 목소리나 원하는 아티스트의 목소리로<br>노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
+        <img style="width: 90px; height: 90px;" src="@/assets/logo/아티스트.png">
+        <h3 class="fs-2 fw-bold text-white pt-3">노래, 음악 애호가</h3>
+        <p class="text-white">자신의 목소리나 원하는 아티스트의 목소리로<br>노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
       </div>
       <div class="feature col">
-        <img style="width: 90px; height: 83px;" src="@/assets/logo/발표.png">
-        <h3 class="fs-2 text-body-emphasis fw-bold">예행 연습</h3>
-        <p>본인의 목소리를 직접 활용 및 비교하여<br>발표나 녹음의 예행 연습을 준비하려는 사람들</p>
+        <img style="width: 90px; height: 90px;" src="@/assets/logo/발표.png">
+        <h3 class="fs-2 fw-bold text-white pt-3">예행 연습</h3>
+        <p class="text-white">본인의 목소리를 직접 활용 및 비교하여<br>발표나 녹음의 예행 연습을 준비하려는 사람들</p>
       </div>
     </div>
   </div>
 
+  <hr class="featurette-divider"> 
+  
 
-
-
-
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 class="display-4 fw-bold text-body-emphasis">상상했던 것들이 현실로!</h1>
+    <div class="px-4 pt-5 mt-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-white"><p class="gradient-text fontchange">상상했던 것들이 현실로!</p></h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">우리는</p>
+      <p class="lead mb-4 text-white">음성은 단순한 소리가 아니라, 감정과 생각의 반영입니다.<br>단 한 번의 클릭으로 나만의 독특한 음원을 창조하세요!<br>혁신적인 인공지능 기술이 만들어내는 놀라운 음성 변환의 세계로 초대합니다.<br>여러분의 이야기가 예술로 승화되는 순간을 함께하겠습니다!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Sign up</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">문의하기</button>
       </div>
     </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
+    <div class="overflow-hidden" style="max-height: 40vh;">
       <div class="container px-5">
-        <img src="homeview_2.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+        <img src="@/assets/homeview_2.png" class="img-fluid border rounded-3 shadow-lg mt-5" alt="Example image" width="700" height="500" loading="lazy">
       </div>
     </div>
   </div>
-  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+  <!-- <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1>
         <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
@@ -112,10 +111,9 @@
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720">
+          <img class="rounded-lg-3" src="@/assets/homeview_2.png" alt="" width="720">
       </div>
-    </div>
-
+    </div> -->
   </div>
     <!-- <hr class="featurette-divider"> -->
     <!-- /END THE FEATURETTES --><!-- /.container -->
@@ -164,8 +162,18 @@ a.my-custom-button {
   border-color: #3a98cb; /* 원하는 테두리 색상 */
 }
 
-a.my-custom-button:hover {
+a.my-custom-button:hover{
   background-color: #2c53a6; /* 마우스 오버 시 색상 */
   border-color: #2c53a6;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #ffffff, #3a98cb);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.fontchange {
+  font-family: Gowun Batang;
 }
 </style>

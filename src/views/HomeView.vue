@@ -20,7 +20,7 @@
         <div class="container">
           <div class="carousel-caption text-start ">
             <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
-            <p class="opacity-75">MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
+            <p>MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
             <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Let's MV!</a></p>
           </div>
         </div>
@@ -66,66 +66,19 @@
     <h2 class="pb-2 border-bottom fw-bold h1">이런 분들에게 추천드려요!</h2>
     <div class="row g-5 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
-        </div>
+        <img style="max-width: 83px; max-height: 83px;" class="img-fluid rounded-circle" src="@/assets/logo/학생.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">학생 및 강의 수강생</h3>
         <p>본인이 좋아하는 목소리로 강의나<br>교재를 듣고자 하는 사람들</p>
       </div>
       <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-          <img class="z-2 bi" width="1em" height="1em" src="@/assets/logo/학생.png">
-        </div>
+        <img style="max-width: 83px; max-height: 83px;" src="@/assets/logo/아티스트.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">노래, 음악 애호가</h3>
         <p>자신의 목소리나 원하는 아티스트의 목소리로<br>노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
       </div>
       <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
-        </div>
+        <img style="max-width: 83px; max-height: 83px;" src="@/assets/logo/발표.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">예행 연습</h3>
         <p>본인의 목소리를 직접 활용 및 비교하여<br>발표나 녹음의 예행 연습을 준비하려는 사람들</p>
-      </div>
-    </div>
-  </div>
-  <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">Hanging icons</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
-        </div>
-        <div>
-          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
-        </div>
-        <div>
-          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
-        </div>
-        <div>
-          <h3 class="fs-2 text-body-emphasis">Featured title</h3>
-          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-          <a href="#" class="btn btn-primary">
-            Primary button
-          </a>
-        </div>
       </div>
     </div>
   </div>
@@ -156,7 +109,6 @@
     </div>
 
     <!-- <hr class="featurette-divider"> -->
-    <nft/>
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
@@ -179,6 +131,7 @@
 import Animation from '../components/Animation_main_text.vue';
 import wave from '../components/Animation_main_wave.vue';
 import nft from '../components/nft.vue';
+import Carousel from 'bootstrap/js/dist/carousel';
 
 export default {
   name: "HomeView",
@@ -187,6 +140,13 @@ export default {
     nft,
     wave,
   },
+  mounted() {
+    var myCarousel = document.querySelector('#myCarousel')
+    var carousel = new Carousel(myCarousel, {
+      interval: 3000,
+      wrap: true
+    });
+  }
 };
 </script>
 
@@ -200,6 +160,7 @@ export default {
 @import 'https://cdn.jsdelivr.net/npm/@docsearch/css@3';
 @import "https://getbootstrap.com/docs/5.3/examples/carousel/";
 @import "https://getbootstrap.com/docs/5.3/examples/features/";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
 a.my-custom-button {
   background-color: #3a98cb; /* 원하는 배경 색상 */
   border-color: #3a98cb; /* 원하는 테두리 색상 */

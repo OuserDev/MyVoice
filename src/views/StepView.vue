@@ -1,18 +1,16 @@
 <template>
-    <div style="margin-top: 500px;" class="px-5 py-5">
-    <FormWizard @on-complete="onComplete" color="#094899">
-      <TabContent title="목소리 데이터셋 선택" icon="fa fa-user">
-
-        <Dataset_select/>
-
-      </TabContent>
-      <TabContent title="음원 파일 업로드" icon="fa fa-gear">
-        My second tab content
-      </TabContent>
-      <TabContent title="결과 받기" icon="fa fa-city">
-        Yuhuuu! This seems pretty damn simple
-      </TabContent>
-    </FormWizard>
+    <div class="container mt-5 pt-5 mb-5 pb-5 ">
+        <FormWizard @on-complete="onComplete" color="#3a98cb">
+            <TabContent title="STEP 1. 목소리 데이터셋 선택" icon="fa fa-microphone">
+                <Dataset_select v-if="convert_status === 1"/>
+            </TabContent>
+            <TabContent title="STEP 2. 음원 파일 업로드" icon="fa fa-upload">
+                <Voice_upload v-if="convert_status === 1"/>
+            </TabContent>
+            <TabContent title="STEP 3. 결과 다운로드!" icon="fa fa-music">
+                <Result_download v-if="convert_status === 1"/>
+            </TabContent>
+        </FormWizard>
     </div>
 </template>
   
@@ -21,21 +19,41 @@
 import { FormWizard, TabContent } from "vue3-form-wizard";
 import "vue3-form-wizard/dist/style.css";
 import Dataset_select from "@/components/Dataset_select.vue";
+import Voice_upload from "@/components/Voice_upload.vue";
+import Result_download from "@/components/Result_download.vue";
+import { mapState } from 'vuex';
 
 export default {
-components: {
-    FormWizard,
-    TabContent,
-    Dataset_select
-},
-methods: {
-    onComplete() {
-    alert("Yay. Done!");
+    components: {
+        FormWizard,
+        TabContent,
+        Dataset_select,
+        Voice_upload,
+        Result_download,
     },
-},
+    methods: {
+        onComplete() {
+        alert("Yay. Done!");
+        },
+        nextTab() {
+        // 탭의 총 수를 확인하고 currentTab 인덱스를 증가
+        if (this.convert_status < 4) {
+        this.convert_status += 1;
+      }
+    }
+    },
+    computed: {
+        ...mapState(['convert_status']),
+    },
 };
 </script>
 
 <style>
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 </style>

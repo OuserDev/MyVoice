@@ -4,7 +4,8 @@ import {mapState} from 'vuex';
 export default createStore({
   state(){
 		return {
-			login_on: 0
+			login_on: 0,
+      convert_status: 1
 		}
 	},
   getters: {

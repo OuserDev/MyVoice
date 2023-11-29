@@ -39,7 +39,7 @@
   
   <style>
   .centered-carousel {
-  width: 700px;
+  width: 600px;
   margin: 0 auto;
 }
 
@@ -71,21 +71,18 @@
   }
   
   .carousel__slide--active ~ .carousel__slide {
-    transform: rotateY(20deg) scale(0.9);
+    transform: rotateY(50deg) scale(0.95);
   }
   
   .carousel__slide--prev {
-    opacity: 1;
-    transform: rotateY(-10deg) scale(0.9);
+    transform: rotateY(-50deg) scale(0.95);
   }
   
   .carousel__slide--next {
-    opacity: 1;
-    transform: rotateY(10deg) scale(0.9);
+    transform: rotateY(30deg) scale(0.9);
   }
   
   .carousel__slide--active {
-    opacity: 1;
     transform: rotateY(0) scale(1);
   }
 

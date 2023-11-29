@@ -14,7 +14,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Vue3FormWizard from 'vue3-form-wizard'
 import 'vue3-form-wizard/dist/style.css'
 
-
 import PrimeVue from 'primevue/config';
 
-createApp(App).use(store).use(router).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app')
+createApp(App).use(store).use(router).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app');

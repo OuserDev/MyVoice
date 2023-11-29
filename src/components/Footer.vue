@@ -1,22 +1,15 @@
 <template>
-<div class="container mt-9">
-  <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-    </ul>
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-    </ul>
-    <p class="text-center text-body-secondary">&copy; 2023 Company, Inc</p>
-  </footer>
-</div>
-</template>
+  <footer class="py-4 bg-dark text-white"> 
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li> <!-- 텍스트 색상을 흰색으로 변경 -->
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+      </ul>
+      <p class="text-center text-white">&copy; 2023 Department of Multimedia Engineering, Andong University</p> <!-- 텍스트 색상을 흰색으로 변경 -->
+    </footer>
+  </template>
 
 
 <script>
@@ -30,6 +23,7 @@ export default {
 <style>
 @import "https://getbootstrap.com/docs/5.3/examples/footers/";
 @import  "https://cdn.jsdelivr.net/npm/@docsearch/css@3";
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

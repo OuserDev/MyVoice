@@ -3,10 +3,10 @@
     <XyzTransition xyz="fade-100% duration-15" appear-visible="true">
       <div class="text-dark" v-if="true">
         <div class="mb-5">
-          <h2 class="fw-bold">방금 선택해주신 목소리로 음원을 변환해볼게요!</h2>
+          <h2 class="fw-bold">방금 선택해주신 목소리로 음원을 변환해볼까요 ?</h2>
 
           <h3>
-            노래, 녹음, 강의 등등 사람의 목소리가 담겨진 목소리를 올려주세요!
+            노래, 녹음, 강의 등등 사람의 목소리가 담겨진 목소리를 올려주세요 !
           </h3>
         </div>
         <div class="mb-5">

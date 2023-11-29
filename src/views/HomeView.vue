@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-dark text-white">
   <div class="image-overlay-container">
     <img src="@/assets/homeview_back.png" class="img-fluid full-width" alt="Responsive image" >
     <div class="image-dark-overlay"></div>
@@ -8,7 +8,7 @@
   </div>
 
   <!-- 캐러셀 -->
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -61,63 +61,61 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
   
 
-  <div class="container marketing">
-    <div class="container px-5 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom fw-bold h1">이런 분들에게 추천드려요!</h2>
+  <div class="container marketing my-5">
+    <div class="container px-5 pt-5 " id="featured-3">
+    <h2 class="pb-2 border-bottom fw-bold h1">이런 분들께 추천드려요!</h2>
     <div class="row g-5 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
-        <img style="max-width: 83px; max-height: 83px;" class="img-fluid rounded-circle" src="@/assets/logo/학생.png">
+        <img style="width: 100px; height: 83px;" class="img-fluid rounded-circle" src="@/assets/logo/학생.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">학생 및 강의 수강생</h3>
         <p>본인이 좋아하는 목소리로 강의나<br>교재를 듣고자 하는 사람들</p>
       </div>
       <div class="feature col">
-        <img style="max-width: 83px; max-height: 83px;" src="@/assets/logo/아티스트.png">
+        <img style="width: 83px; height: 83px;" src="@/assets/logo/아티스트.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">노래, 음악 애호가</h3>
         <p>자신의 목소리나 원하는 아티스트의 목소리로<br>노래나 오디오 콘텐츠를 재생성하고자 하는 크리에이터</p>
       </div>
       <div class="feature col">
-        <img style="max-width: 83px; max-height: 83px;" src="@/assets/logo/발표.png">
+        <img style="width: 90px; height: 83px;" src="@/assets/logo/발표.png">
         <h3 class="fs-2 text-body-emphasis fw-bold">예행 연습</h3>
         <p>본인의 목소리를 직접 활용 및 비교하여<br>발표나 녹음의 예행 연습을 준비하려는 사람들</p>
       </div>
     </div>
   </div>
-  
-    <!-- START THE FEATURETTES -->
 
-    <!-- <hr class="featurette-divider"> -->
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+
+
+
+
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold text-body-emphasis">상상했던 것들이 현실로!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">우리는</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="homeview_2.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1>
+        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+          <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720">
       </div>
     </div>
 
-    <!-- <hr class="featurette-divider"> -->
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
-
-    <!-- <hr class="featurette-divider"> -->
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
-      </div>
-    </div>
   </div>
     <!-- <hr class="featurette-divider"> -->
     <!-- /END THE FEATURETTES --><!-- /.container -->
@@ -143,7 +141,7 @@ export default {
   mounted() {
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new Carousel(myCarousel, {
-      interval: 3000,
+      interval: 2500,
       wrap: true
     });
   }

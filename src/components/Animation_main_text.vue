@@ -28,7 +28,7 @@ export default {
             } else {
                 this.message += 1
             }
-        }, 3000);
+        }, 2000);
     },
     beforeDestroy() {
         clearInterval(this.interval);

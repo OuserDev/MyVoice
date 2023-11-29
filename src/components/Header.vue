@@ -31,7 +31,7 @@
         </router-link>
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
           <li>
-            <router-link to="/" class="nav-link text-secondary">
+            <router-link to="/" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
               Home
             </router-link>
@@ -39,7 +39,7 @@
           <li>
             <router-link to="/voice" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
-              About
+              Convert
             </router-link>
           </li>
           <li>

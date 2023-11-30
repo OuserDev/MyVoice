@@ -4,7 +4,7 @@
       <div class="square" v-if="message == 0">
         내 목소리로 된 아이유 노래를 듣고 싶다면 ?
       </div>
-      <div class="square" v-if="message == 2">
+      <div class="square" v-if="message == 1">
         남사친 사운드로 라디오를 듣고 싶다면 ?
       </div>
       <div class="square" v-if="message == 3">
@@ -13,11 +13,12 @@
       <div class="square" v-if="message == 4">
         중요한 발표나 녹음을 연습하고 싶다면 ?
       </div>
-      <div class="square" v-if="message == 1">
+      <!-- MyVoice 텍스트 -->
+      <div v-if="message == 2" class="square">
         <p class="gradient-text" style="font-size: 2.5em">MyVoice</p>
-        <div class="custom"><img src="/logow.png" /></div>
       </div>
     </XyzTransition>
+    <!-- logow.png 이미지에 대한 XyzTransition -->
   </div>
 </template>
 

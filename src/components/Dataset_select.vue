@@ -1,5 +1,5 @@
 <template>
-  <div class="content mb-5">
+  <div class="content mb-5" >
     <XyzTransition xyz="fade-100% duration-5">
       <div class="text-dark mb-5" v-if="true">
         <h1 class="fw-bold">환영합니다 !</h1>

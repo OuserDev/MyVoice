@@ -67,4 +67,7 @@ export default {
   opacity: 0;
 }
 
+.main-content {
+    margin-top: 80px;
+}
 </style>

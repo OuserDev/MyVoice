@@ -1,5 +1,5 @@
 <template>
-  <footer class="py-4 bg-dark text-white"> 
+  <footer class="footer-custom py-4 bg-dark text-white"> 
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li> <!-- 텍스트 색상을 흰색으로 변경 -->
         <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
@@ -22,7 +22,13 @@ export default {
 
 <style>
 @import "https://getbootstrap.com/docs/5.3/examples/footers/";
-@import  "https://cdn.jsdelivr.net/npm/@docsearch/css@3";
+@import "https://cdn.jsdelivr.net/npm/@docsearch/css@3";
+
+.footer-custom {
+  position: relative; /* z-index를 적용하기 위해서는 position이 필요합니다 */
+  z-index: 5; /* 원하는 z-index 값 */
+  /* ...기타 스타일... */
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;

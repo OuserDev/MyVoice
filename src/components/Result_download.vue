@@ -1,6 +1,6 @@
 <template>
   <div class="content mb-5">
-    <XyzTransition xyz="fade up-100% duration-10" :appear-visible="true">
+    <XyzTransition xyz="fade up-50% duration-10" :appear-visible="true">
       <div class="text-dark mb-5 pb-5" v-if="true">
         <h2 class="fw-bold">기다려주셔서 감사해요 !</h2>
         <h2>결과가 나왔어요 !</h2>

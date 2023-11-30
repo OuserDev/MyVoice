@@ -1,6 +1,6 @@
 <template>
   <div class="content mb-5">
-    <XyzTransition xyz="fade-100% duration-15" :appear-visible="true">
+    <XyzTransition xyz="fade up-50% duration-15" :appear-visible="true">
       <div class="text-dark" v-if="true">
         <div class="mb-5">
           <h2 class="fw-bold">방금 선택해주신 목소리로 음원을 변환해볼까요 ?<br></h2>
@@ -51,25 +51,40 @@ export default {
 }
 
 .p-fileupload-buttonbar {
-  display: flex; /* 버튼을 일렬로 배열 */
-  justify-content: space-between; /* 버튼 사이의 공간 분배 */
-  margin-bottom: 8px; /* 아래쪽 여백 설정 */
-  padding: 0; /* 추가된 패딩 제거 */
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f9fafb; /* bg-gray-50 */
+  color: #4b5563; /* text-gray-700 */
+  padding: 20px; /* p-5 */
+  border: 1px solid #e5e7eb; /* border-gray-300 */
+  border-radius: 0.5rem 0.5rem 0 0 ; /* rounded-tr-lg rounded-tl-lg */
+  gap: 8px; /* gap-2 */
+  border-bottom: none; /* border-b-0 */
 }
 
+
 .p-fileupload-content {
-  border-top: 1px solid #dddddd; /* 상단 테두리 설정 유지 */
-  padding-top: 8px; /* 상단 여백 설정 유지 */
+  position: relative;
+  background-color: #ffffff; /* bg-white */
+  color: #4b5563; /* text-gray-700 */
+  padding: 32px; /* p-8 */
+  border: 1px solid #e5e7eb; /* border-gray-300 */
+  border-radius: 0 0 0.75rem 0.75rem ; /* rounded-b-lg */
 }
 
 .p-fileupload-file {
-  display: flex; /* 파일 요소를 일렬로 배열 */
-  align-items: center; /* 센터 정렬 */
-  margin-bottom: 8px; /* 아래쪽 여백 설정 유지 */
-  background-color: #f8f8f8; /* 파일 배경색 추가 */
-  border: 1px solid #dddddd; /* 파일 테두리 설정 */
-  border-radius: 4px; /* 파일 모서리 둥글게 설정 */
-  padding: 8px; /* 파일 요소 안쪽 여백 설정 */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px; /* p-4 */
+  border: 1px solid #e5e7eb; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded */
+  gap: 8px; /* gap-2 */
+  margin-bottom: 8px; /* mb-2 */
+}
+
+.p-fileupload-file:last-child {
+  margin-bottom: 0; /* last:mb-0 */
 }
 
 .p-fileupload-file-thumbnail {
@@ -79,6 +94,10 @@ export default {
   margin-right: 8px; /* 썸네일과 세부 정보 사이 여백 추가 */
 }
 
+.p-fileupload-thumbnail {
+  flex-shrink: 0; /* shrink-0 */
+}
+
 .p-fileupload-file-details {
   flex-grow: 1; /* 남은 공간 채우기 */
   padding-left: 8px; /* 왼쪽 여백 설정 유지 */
@@ -86,12 +105,13 @@ export default {
 
 .p-fileupload-file-name {
   font-weight: bold; /* 글씨 굵게 설정 유지 */
-  margin-bottom: 4px; /* 파일 이름 아래쪽 여백 추가 */
+  margin-bottom: 8px; /* 파일 이름 아래쪽 여백 추가 */
 }
 
 .p-fileupload-file-size {
   color: #999999; /* 글씨 색상 설정 유지 */
   font-size: 12px; /* 파일 크기 글씨 크기 설정 */
+  margin-right: 8px; /* mr-2 */
 }
 
 .p-fileupload-file-badge {
@@ -100,6 +120,45 @@ export default {
   padding: 2px 4px; /* 안쪽 여백 설정 유지 */
   font-size: 12px; /* 배지 글씨 크기 설정 */
   margin-left: 4px; /* 배지와 이름 사이 여백 추가 */
+}
+
+.p-fileupload-upload-icon {
+  margin-right: 8px; /* mr-2 */
+}
+
+.p-fileupload-choose {
+  color: #ffffff; /* text-white */
+  background-color: #3a98cb; /* bg-blue-500 */
+  border: 1px solid #3a98cb; /* border-blue-500 */
+  padding: 12px 20px; /* p-3 px-5 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 1rem; /* text-base */
+  position: relative; /* overflow-hidden relative */
+}
+
+button.p-button {
+  color: #ffffff; /* text-white */
+  background-color: #95b9cc; /* bg-blue-500 */
+  border: 1px solid #95b9cc; /* border-blue-500 */
+  padding: 12px 20px; /* p-3 px-5 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 1rem; /* text-base */
+  position: relative; /* overflow-hidden relative */
+}
+
+/* Choose Button Icon */
+.p-fileupload-choose {
+  margin-right: 8px; /* mr-2 */
+  display: inline-block; /* inline-block */
+  font-weight: bold;
+}
+
+.p-button-icon {
+  margin-right: 8px;
+}
+
+.p-fileupload-file-remove .p-button-icon {
+  margin-right: 0;
 }
 
 .p-fileupload-file-actions {

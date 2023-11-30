@@ -87,7 +87,7 @@
   
 
     <div class="px-4 pt-5 mt-5 text-center border-bottom">
-    <h1 class="display-4 fw-bold text-white"><p class="gradient-text fontchange">상상했던 것들이 현실로!</p></h1>
+    <h1 class="display-4 fw-bold text-white"><p class="gradient-text">상상했던 것들이 현실로!</p></h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4 text-white">음성은 단순한 소리가 아니라, 감정과 생각의 반영입니다.<br>단 한 번의 클릭으로 나만의 독특한 음원을 창조하세요!<br>혁신적인 인공지능 기술이 만들어내는 놀라운 음성 변환의 세계로 초대합니다.<br>여러분의 이야기가 예술로 승화되는 순간을 함께하겠습니다!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
@@ -126,14 +126,12 @@
 <script>
 import Animation from '../components/Animation_main_text.vue';
 import wave from '../components/Animation_main_wave.vue';
-import nft from '../components/nft.vue';
 import Carousel from 'bootstrap/js/dist/carousel';
 
 export default {
   name: "HomeView",
   components: {
     Animation,
-    nft,
     wave,
   },
   mounted() {
@@ -173,7 +171,4 @@ a.my-custom-button:hover{
     color: transparent;
 }
 
-.fontchange {
-  font-family: Gowun Batang;
-}
 </style>

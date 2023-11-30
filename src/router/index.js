@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StepView from '../views/StepView.vue'
+import Community from '../views/Community.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/voice',
     name: 'voice',
     component: StepView
+  },
+  {
+    path: '/community',
+    name: 'community',
+    component: Community
   },
 ]
 

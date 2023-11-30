@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-6 pt-5 mb-5 pb-5 ">
+    <div class="container pt-5 ">
         <FormWizard @on-complete="onComplete" color="#3a98cb">
             <TabContent title="STEP 1. 목소리 데이터셋 선택" icon="fa fa-microphone">
                 <Dataset_select v-if="convert_status === 1"/>

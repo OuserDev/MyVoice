@@ -49,6 +49,7 @@
     color: white; /* 글자 색상 */
     /* 기타 필요한 스타일 */
   }
+
   .text-overlay .custom {
     /* 여기에 스타일 속성을 추가한다 */
     position: absolute;

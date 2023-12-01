@@ -60,4 +60,5 @@ export default {
 .mt-6 {
     margin-top: 4rem; /* 또는 원하는 크기 */
 }
+
 </style>

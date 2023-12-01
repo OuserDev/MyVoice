@@ -1,9 +1,9 @@
 <template>
     <div class="Card" :style="cardStyle">
       <!-- 로고에 :style을 사용하여 동적으로 생성된 색상 적용 -->
-      <div class="name" :style="{ color: logoColor }">아이유</div>
+      <div class="name" :style="{ color: logoColor }">{{ 카드정보.voice_name }}</div>
       <!-- 이미지 -->
-      <img src="@/assets/celebrity.png" class="image" :style="{ boxShadow: boxShadowStyle }" alt="Celebrity">
+      <img :src="getImagePath(카드정보.voice_name)" class="image" :style="{ boxShadow: boxShadowStyle }">
       <!-- 제목에 :style을 사용하여 동적으로 생성된 색상 적용 -->
       <div class="title" :style="{ color: logoColor }">MY VOICE</div>
     </div>
@@ -13,8 +13,11 @@
   export default {
     components: {
     },
+    props : {
+        카드정보:Object
+    },
     data() {
-      return {
+      return {      
         cardStyle: {},
         logoColor: '', // 로고 및 텍스트 색상
         boxShadowStyle: '',
@@ -36,7 +39,9 @@
         this.boxShadowStyle = `0 0px 13px 20px rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.3)`;
         // 로고와 제목 색상을 동일한 랜덤 색상으로 설정
         this.logoColor = color;
-      },
+      },getImagePath(name) {
+        return require(`@/assets/datasets/${name}.png`);
+      }
     },
     mounted() {
       this.setRandomGradient();

@@ -37,28 +37,22 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/voice" class="nav-link text-white">
+            <router-link to="/convert" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
               Convert
             </router-link>
           </li>
           <li>
             <router-link to="/community" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
               Community
             </router-link>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"></use></svg>
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
+            <button @click="로그인창열기" type="button" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
               Customers
-            </a>
+            </button>
           </li>
         </ul>
       </div>
@@ -71,9 +65,14 @@
 
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: "Header",
   components: {},
+  methods : {
+    ...mapMutations(['로그인창열기'])
+  },
 };
 </script>
 

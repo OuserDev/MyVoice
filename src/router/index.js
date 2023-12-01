@@ -10,8 +10,8 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/voice',
-    name: 'voice',
+    path: '/convert',
+    name: 'convert',
     component: StepView
   },
   {

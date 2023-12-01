@@ -21,7 +21,7 @@
           <div class="carousel-caption text-start ">
             <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
             <p>MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
-            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Let's MV!</a></p>
+            <p><router-link class="btn btn-lg btn-primary my-custom-button rounded" to="/voice">Let's MV!</router-link></p>
           </div>
         </div>
       </div>
@@ -31,17 +31,17 @@
           <div class="carousel-caption">
             <h1 class="fw-bold">색다른 경험을 시작해보세요!</h1>
             <p>AI XXX 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
-            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">자세히 보기</a></p>
+            <p><a class="btn btn-lg btn-primary my-custom-button rounded" href="#">자세히 보기</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <img src="@/assets/logo/carousel3.jpg" class="d-block w-100" alt="...">
-        <div class="container">
+        <div class="">
           <div class="carousel-caption text-end">
             <h1 class="fw-bold">어제 보다 더 나은 오늘을 위해.</h1>
-            <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다</p>
-            <p><a class="btn btn-lg btn-primary my-custom-button" href="#">Contact</a></p>
+            <p>MyVoice는 새로운 디지털 시대의 탄생에 앞장서기 위해 꾸준히 도약하겠습니다.</p>
+            <p><a class="btn btn-primary btn-lg my-custom-button rounded" href="#">Contact</a></p>
           </div>
         </div>
       </div>
@@ -88,16 +88,16 @@
 
     <div class="px-4 pt-5 mt-5 text-center border-bottom">
     <h1 class="display-4 fw-bold text-white"><p class="gradient-text">상상했던 것들이 현실로!</p></h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4 text-white">음성은 단순한 소리가 아니라, 감정과 생각의 반영입니다.<br>단 한 번의 클릭으로 나만의 독특한 음원을 창조하세요!<br>혁신적인 인공지능 기술이 만들어내는 놀라운 음성 변환의 세계로 초대합니다.<br>여러분의 이야기가 예술로 승화되는 순간을 함께하겠습니다!</p>
+    <div class="col-lg-8 mx-auto">
+      <p class="lead mb-4 text-white">음성은 단순한 소리가 아니라, 감정과 생각의 도화지입니다.<br>단 한 번의 클릭으로 나만의 독특한 음원을 창조하세요!<br>혁신적인 인공지능 기술이 만들어내는 놀라운 음성 변환의 세계로 초대합니다.<br>여러분의 이야기가 예술로 승화되는 순간을 함께하겠습니다!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Sign up</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">문의하기</button>
+        <button type="button" class="btn btn-primary rounded px-4 my-custom-button" @click="회원가입창열기">Sign up</button>
+        <button type="button" class="btn btn-outline-secondary rounded px-4">문의하기</button>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 40vh;">
-      <div class="container px-5">
-        <img src="@/assets/homeview_2.png" class="img-fluid border rounded-3 shadow-lg mt-5" alt="Example image" width="700" height="500" loading="lazy">
+      <div class="">
+        <img src="@/assets/homeview_2.png" class="img-fluid border rounded-3 shadow-lg mt-5" style="" alt="Example image" width="700" height="500" loading="lazy">
       </div>
     </div>
   </div>
@@ -124,6 +124,8 @@
 
 
 <script>
+import { mapMutations } from 'vuex'
+
 import Animation from '../components/Animation_main_text.vue';
 import wave from '../components/Animation_main_wave.vue';
 import Carousel from 'bootstrap/js/dist/carousel';
@@ -140,6 +142,9 @@ export default {
       interval: 2500,
       wrap: true
     });
+  },
+  methods : {
+    ...mapMutations(['회원가입창열기'])
   }
 };
 </script>
@@ -158,11 +163,29 @@ export default {
 a.my-custom-button {
   background-color: #3a98cb; /* 원하는 배경 색상 */
   border-color: #3a98cb; /* 원하는 테두리 색상 */
+  padding: 10px 30px;
+  font-size: 20px;
 }
 
 a.my-custom-button:hover{
   background-color: #2c53a6; /* 마우스 오버 시 색상 */
   border-color: #2c53a6;
+  padding: 10px 30px;
+  font-size: 20px;
+}
+
+button.my-custom-button {
+  background-color: #3a98cb; /* 원하는 배경 색상 */
+  border-color: #3a98cb; /* 원하는 테두리 색상 */
+  padding: 10px 30px;
+  font-size: 20px;
+}
+
+button.my-custom-button:hover{
+  background-color: #2c53a6; /* 마우스 오버 시 색상 */
+  border-color: #2c53a6;
+  padding: 10px 30px;
+  font-size: 20px;
 }
 
 .gradient-text {

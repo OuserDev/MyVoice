@@ -11,16 +11,19 @@
 
   <div class="login-content">
     <XyzTransition appear xyz="fade up-50% ease-on">
-      <Login v-if="login_on == 1"/>
-      <Signup v-if="login_on == 1"/>
+      <Login v-if="로그인창상태 == 1"/>
+      <Signup v-if="회원가입창상태 == 1"/>
     </XyzTransition>
   </div>
 
   <Footer />
 </template>
 
+
+
 <script>
 import { mapState } from 'vuex';
+
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Login from './components/Login.vue';
@@ -37,7 +40,7 @@ export default {
       Signup,
     },
   computed: {
-    ...mapState(['login_on']),
+    ...mapState(['login_on','회원가입창상태', '로그인창상태']),
   },
   }
 </script>

@@ -3,7 +3,7 @@
   <div class="centered-carousel">
   <Carousel :itemsToShow="3" :wrapAround="true" :autoplay="autoplayInterval" :transition="500">
     <Slide v-for="(item,index) in 보이스셋리스트" :key="index" >
-  <card :카드정보="item" @click="stopAutoplay"/>
+  <card :카드정보="item" @click="stopAutoplay" @클릭카드선택="클릭카드정보"/>
     </Slide>
 
     <template #addons>
@@ -12,6 +12,9 @@
   </template>
   </Carousel>
   </div>
+  </div>
+  <div class="container-fluid text-white" v-if="this.selectCardStatus===1">
+    <card :카드정보="this.selectCard"></card>
   </div>
 </template>
 
@@ -25,11 +28,13 @@ import { mapState } from 'vuex';
 export default defineComponent({
   name: 'Autoplay',
   data() {
-      return {
-        autoplayInterval: 2000,
-          settings: {
-          itemsToShow: 1,
-          snapAlign: 'center',
+    return {
+      selectCard: "",
+      selectCardStatus: 0,
+      autoplayInterval: 2000,
+        settings: {
+        itemsToShow: 1,
+        snapAlign: 'center',
   },
       }
   },
@@ -45,9 +50,18 @@ export default defineComponent({
   },
   methods : {
     stopAutoplay() {
-      this.autoplayInterval = 0;
-    }
-  }
+      if (this.autoplayInterval == 2000) {
+        this.autoplayInterval = 0;
+        this.selectCardStatus = 1;
+      } else {
+        this.autoplayInterval = 2000;
+        this.selectCardStatus = 0;
+      }
+    },
+    클릭카드정보(카드정보, color) {
+      this.selectCard = 카드정보;
+    },
+  },
 })
 </script>
 

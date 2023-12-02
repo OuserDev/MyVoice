@@ -20,9 +20,47 @@
 
 <script>
 import { mapMutations,mapActions } from 'vuex'
+import { createToast } from "mosha-vue-toastify";
 
 export default {
   name: "Signup",
+  setup() {
+    const errorToast = () => {
+      createToast(
+        {
+          title: "회원가입 오류!",
+          description: "",
+        },
+        {
+          type: "danger",
+          position: "top-center",
+          transition: "slide",
+          timeout: 4000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    const successToast = () => {
+      createToast(
+        {
+          title: "회원가입 성공!",
+          description: "환영합니다 :D",
+        },
+        {
+          position: "top-right",
+          type: "success",
+          transition: "bounce",
+          timeout: 3000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    return { errorToast, successToast };
+  },
   data() {
     return {
       username: '',
@@ -44,10 +82,12 @@ export default {
       };
       this.회원가입전송(signUpData)
       .then(() => {
-        console.log('회원가입 성공')
+        console.log('회원가입 성공');
+        this.successToast();
       })
       .catch(error => {
-        console.error('회원가입 시도 오류', error)
+        console.error('회원가입 시도 오류', error);
+        this.errorToast();
       })
     }
   }

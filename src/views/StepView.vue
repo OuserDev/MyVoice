@@ -4,7 +4,7 @@
             <TabContent title="STEP 1. 목소리 데이터셋 선택" icon="fa fa-microphone">
                 <Dataset_select v-if="convert_status === 1"/>
             </TabContent>
-            <TabContent title="STEP 2. 음원 파일 업로드" icon="fa fa-upload">
+            <TabContent title="STEP 2. 음성 파일 업로드" icon="fa fa-upload">
                 <Voice_upload v-if="convert_status === 1"/>
             </TabContent>
             <TabContent title="STEP 3. 결과 다운로드!" icon="fa fa-music">

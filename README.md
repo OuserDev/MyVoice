@@ -1,14 +1,15 @@
-<<<<<<< HEAD
-# myvoice
+# MyVoice
+> **2023 ANU 콘텐츠 캡스톤디자인 팀 프로젝트**<br>
+<br>**사용자 맞춤형 AI 음성 변환 웹 사이트**
 
-### 개발자 명단
+## Crew
+- 손 다 윤 (여자이름 아님)
 - Castle.gay "GUCCI GUCCI"
 - sUCKDICk. *Drag0nz*
 - Xes - kXng - Gun (봄이 집사)
 - and...
 **AlphaMale KSH**
-
-HAHAHAHAHAHA
+<br>HAHAHAHAHAHA
 
 ## Project setup
 ```
@@ -34,5 +35,3 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 =======
 # myvoice_frontend
-MV (MyVoice) 웹 페이지 프론트엔드
->>>>>>> e12c338e05e41f8aceebc6c64df0471e88d4e2ff

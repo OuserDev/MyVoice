@@ -5,8 +5,8 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 
 
-router.get('/board', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'board.html'));  // 'board.html' 파일의 경로 설정
+router.get('/write', (req, res) => {
+    res.sendFile(path.join(__dirname, 'board.html'));  // 'board.html' 파일의 경로 설정
 });
 
 router.post('/board', async (req, res) => {

@@ -5,7 +5,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'board.html')); // 'index.html' 파일의 경로를 설정하세요.
+    res.sendFile(path.join(__dirname, 'index.html')); // 'index.html' 파일의 경로를 설정하세요.
 });
 
 router.post('/register', async (req, res) => {

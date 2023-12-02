@@ -43,6 +43,11 @@ export default {
   computed: {
     ...mapState(['회원가입창상태', '로그인창상태']),
   },
+  methods : {
+    run() {
+      this.$moshaToast('Hmm..not as easy huh');
+    }
+  }
   }
 </script>
 

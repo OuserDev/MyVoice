@@ -10,6 +10,12 @@
             <img src="/logow.png" style="width: 150px; height: 150px" />
             <nft />
           </div>
+          <div class="container-fluid">
+            asdfasdfasdfasdafasdf
+            asdfasdfasdfasdafasdfdfasdfasdf
+            asdfasdfasdfasdafasdfdfasdfasdfasadfasdf
+            asdfasdfasdf
+          </div>
           <div class="b-example-divider"></div>
         </div>
       </div>

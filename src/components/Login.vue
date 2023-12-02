@@ -35,7 +35,10 @@ export default {
     ...mapActions(['로그인전송']),
 
     로그인() {
-      const credentials = { username:this.username, password:this.password };
+      const credentials = {
+        username:this.username,
+        password:this.password
+      };
       this.로그인전송(credentials)
       .then(() => {
         console.log('로그인 성공')

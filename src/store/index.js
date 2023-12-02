@@ -69,15 +69,28 @@ export default createStore({
       return axios
       .post('https://localhost:3000/login', credentials)
       .then(response => {
-        context.commit('뮤테이션 처리 작성해야함', response.data);
+        context.commit('로그인 뮤테이션 처리 작성해야함', response.data);
         // 여기서의 처리가 컴포넌트의 로그인 method 성공 수행보다 이전에 일어남
       })
       .catch(error => {
         console.error('로그인전송 오류',error);
         throw error;
       });
-    }
+    },
+
+    회원가입전송(context, userData) {
+      return axios
+      .post('https://localhost:3000/register', userData)
+      .then(response => {
+        context.commit('회원가입 뮤테이션 처리 작성해야함', response.data);
+      })
+      .catch(error => {
+        console.error('회원가입전송 오류',error);
+        throw error;
+      });
+    },
   },
+  
   modules: {
   }
 })

@@ -16,6 +16,11 @@ import 'vue3-form-wizard/dist/style.css'
 
 import PrimeVue from 'primevue/config';
 
+import moshaToast from 'mosha-vue-toastify'
+import 'mosha-vue-toastify/dist/style.css'
+
+
+
 store.dispatch('get보이스셋리스트');
 
-createApp(App).use(store).use(router).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app');
+createApp(App).use(store).use(router).use(moshaToast).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app');

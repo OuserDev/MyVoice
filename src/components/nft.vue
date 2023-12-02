@@ -1,9 +1,9 @@
 <template>
   <div style="padding-bottom:50px;">
   <div class="centered-carousel">
-  <Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
+  <Carousel :itemsToShow="3" :wrapAround="true" :autoplay="autoplayInterval" :transition="500">
     <Slide v-for="(item,index) in 보이스셋리스트" :key="index" >
-  <card :카드정보="item" />
+  <card :카드정보="item" @click="stopAutoplay"/>
     </Slide>
 
     <template #addons>
@@ -26,6 +26,7 @@ export default defineComponent({
   name: 'Autoplay',
   data() {
       return {
+        autoplayInterval: 2000,
           settings: {
           itemsToShow: 1,
           snapAlign: 'center',
@@ -42,6 +43,11 @@ export default defineComponent({
   computed : {
     ...mapState(['보이스셋리스트']),
   },
+  methods : {
+    stopAutoplay() {
+      this.autoplayInterval = 0;
+    }
+  }
 })
 </script>
 

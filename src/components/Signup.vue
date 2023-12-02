@@ -4,12 +4,12 @@
       <button type="button" class="customBtn btn-close position-absolute end-0 m-4" style="width: 0.5rem; height: 0.5rem;" aria-label="Close" @click="회원가입창열기"></button>
       <div class="form">
           <h3 style="color:black; margin-bottom: 30px;">회원가입</h3>
-          <form class="login-form">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <input type="password" placeholder="Password 재확인"/>
-            <input type="text" placeholder="Email@address"/>
-            <button>create</button>
+          <form class="login-form" @submit.prevent="회원가입">
+            <input type="text" placeholder="Username" v-model="username"/>
+            <input type="password" placeholder="Password" v-model="password"/>
+            <input type="password" placeholder="Password 재확인" v-model="passwordReconfirm"/>
+            <input type="text" placeholder="Email@address" v-model="email"/>
+            <button type="submit">create</button>
             <p class="message fw-normal">이미 등록된 회원이신가요? <button class="btnCustom mb-2" @click.prevent="로그인창열기();">Sign In</button></p>
           </form>
       </div>
@@ -19,13 +19,37 @@
 
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations,mapActions } from 'vuex'
 
 export default {
   name: "Signup",
+  data() {
+    return {
+      username: '',
+      password: '',
+      passwordReconfirm: '',
+      email: '',
+    }
+  },
   components: {},
   methods : {
-    ...mapMutations(['회원가입창열기', '로그인창열기'])
+    ...mapMutations(['회원가입창열기', '로그인창열기']),
+    ...mapActions(['회원가입전송']),
+    회원가입() {
+      const signUpData = { 
+        username: this.username,
+        password: this.password,
+        passwordReconfirm: this.passwordReconfirm,
+        email: this.email
+      };
+      this.회원가입전송(signUpData)
+      .then(() => {
+        console.log('회원가입 성공')
+      })
+      .catch(error => {
+        console.error('회원가입 시도 오류', error)
+      })
+    }
   }
 };
 </script>

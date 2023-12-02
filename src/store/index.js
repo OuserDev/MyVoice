@@ -14,18 +14,34 @@ export default createStore({
   },
   mutations: {
     로그인창열기(state) {
+      if (state.회원가입창상태 === 1) {
+        state.회원가입창상태 = 0
+        setTimeout(() => {
+          if (state.로그인창상태 == 0) {
+            state.로그인창상태 = 1
+          } 
+        }, 500);
+      } else {
       if (state.로그인창상태 == 0) {
         state.로그인창상태 = 1
       } else if (state.로그인창상태 == 1) {
         state.로그인창상태 = 0
-    }
+    }};
   },
     회원가입창열기(state) {
+      if (state.로그인창상태 === 1) {
+        state.로그인창상태 = 0
+        setTimeout(() => {
+          if (state.회원가입창상태 == 0) {
+            state.회원가입창상태 = 1
+          } 
+        }, 500);
+      } else {
       if (state.회원가입창상태 == 0) {
         state.회원가입창상태 = 1
       } else if (state.회원가입창상태 == 1) {
         state.회원가입창상태 = 0
-    }
+    }};
   },
     set보이스셋리스트 (state,data) {
       state.보이스셋리스트 = data.data;

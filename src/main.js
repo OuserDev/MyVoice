@@ -16,4 +16,6 @@ import 'vue3-form-wizard/dist/style.css'
 
 import PrimeVue from 'primevue/config';
 
+store.dispatch('get보이스셋리스트');
+
 createApp(App).use(store).use(router).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app');

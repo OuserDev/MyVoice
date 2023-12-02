@@ -21,11 +21,6 @@
     <!-- logow.png 이미지에 대한 XyzTransition -->
   </div>
 </template>
-
-<!-- appear - 초기 렌더링시, true로 하면 페이지 로드시 요소가 애니메이션과 함께 등장
-appear-visible - 요소가 뷰포트 내에 보일 때까지 시작을 지연시킴
-IntersectionObserver 옵션 - 동작 조절 가능 -->
-
 <script>
 export default {
   data() {

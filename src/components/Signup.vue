@@ -10,7 +10,7 @@
             <input type="password" placeholder="Password 재확인"/>
             <input type="text" placeholder="Email@address"/>
             <button>create</button>
-            <p class="message fw-normal">이미 등록된 회원이신가요?　<a class="fw-bold" href="#">Sign In</a></p>
+            <p class="message fw-normal">이미 등록된 회원이신가요? <button class="btnCustom mb-2" @click.prevent="로그인창열기();">Sign In</button></p>
           </form>
       </div>
     </div>
@@ -25,7 +25,7 @@ export default {
   name: "Signup",
   components: {},
   methods : {
-    ...mapMutations(['회원가입창열기'])
+    ...mapMutations(['회원가입창열기', '로그인창열기'])
   }
 };
 </script>
@@ -39,4 +39,13 @@ export default {
     width: 0.5rem; /* 너비 조정 */
     height: 0.5rem; /* 높이 조정 */
   }
+
+button.btnCustom {
+  font-family: 'IBM Plex Sans KR', serif;
+  font-weight: bolder;
+  width:60px;
+  padding: 0px; /* 내부 여백 */
+  background: none;
+  color: #3a98cb;
+}
 </style>

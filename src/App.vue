@@ -28,6 +28,7 @@ import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Login from './components/Login.vue';
 import Signup from './components/Signup.vue';
+
 export default {
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
       Signup,
     },
   computed: {
-    ...mapState(['login_on','회원가입창상태', '로그인창상태']),
+    ...mapState(['회원가입창상태', '로그인창상태']),
   },
   }
 </script>

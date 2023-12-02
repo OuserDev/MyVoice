@@ -1,7 +1,7 @@
 <template>
   <div style="padding-bottom:50px;">
   <div class="centered-carousel">
-  <Carousel :itemsToShow="3" :wrapAround="true" :autoplay="3000" :transition="500">
+  <Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
     <Slide v-for="(item,index) in 보이스셋리스트" :key="index" >
   <card :카드정보="item" />
     </Slide>
@@ -20,7 +20,7 @@ import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import card from "@/components/card.vue";
-import { mapActions,mapState } from 'vuex';
+import { mapState } from 'vuex';
 
 export default defineComponent({
   name: 'Autoplay',
@@ -42,17 +42,6 @@ export default defineComponent({
   computed : {
     ...mapState(['보이스셋리스트']),
   },
-  methods: {
-    ...mapActions(['get보이스셋리스트'])
-  },
-  mounted() {
-    this.get보이스셋리스트();
-  },
-  watch : {
-    보이스셋리스트(newVal) {
-        console.log("성공", newVal[0].voice_name);
-    }
-  }
 })
 </script>
 

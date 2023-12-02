@@ -19,6 +19,9 @@ app.use(session({
     }
 }));
 
+app.use(cors({
+    origin: 'http://localhost:8080' // Vue 앱의 출처
+  }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

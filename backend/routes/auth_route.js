@@ -64,13 +64,23 @@ router.post('/login', async (req, res) => {
         // 비밀번호 확인
         const user = users[0];
         const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) {
+
+        if (validPassword) {
+            // 세션에 사용자 정보 저장
+            req.session.user = { id: user.id, username: user.username };
+            console.log("로그인 성공함: ", username);
+
+            // 클라이언트에 성공 응답 전송
+            res.send('Login successful');
+        } else {
+            // 로그인 실패 처리
             return res.status(401).send('Invalid username or password');
         }
-
         // 로그인 성공 처리
         console.log("로그인 성공함: ", username)
         res.send('Login successful');
+
+        // 세션 얹어서 뷰단에 보내기
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

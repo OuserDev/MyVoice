@@ -19,7 +19,7 @@
         <img src="@/assets/logo/carousel1.jpg" class="d-block w-100" alt="...">
         <div class="container">
           <div class="carousel-caption text-start ">
-            <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
+            <h1 class="fw-bold">당신의 상상sdf력을 펼쳐보세요!</h1>
             <p>MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
             <p><router-link class="btn btn-lg btn-primary my-custom-button rounded" to="/convert">Let's MV!</router-link></p>
           </div>

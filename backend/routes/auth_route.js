@@ -41,6 +41,7 @@ router.post('/register', async (req, res) => {
 
 router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html')); // 'index.html' 파일의 경로를 설정하세요.
+    console.log('get요청은됨');
 });
 
 router.post('/login', async (req, res) => {

@@ -1,6 +1,15 @@
 <<<<<<< HEAD
 # myvoice
 
+### 개발자 명단
+- Castle.gay "GUCCI GUCCI"
+- sUCKDICk. *Drag0nz*
+- Xes - kXng - Gun (봄이 집사)
+- and...
+**AlphaMale KSH**
+
+HAHAHAHAHAHA
+
 ## Project setup
 ```
 npm install

@@ -5,10 +5,10 @@
         <button type="button" class="customBtn btn-close position-absolute end-0 m-4" style="width: 0.5rem; height: 0.5rem;" aria-label="Close" @click="로그인창열기"></button>
         <div class="form">
             <h3 style="color:black; margin-bottom: 30px;">로그인</h3>
-            <form class="login-form">
-              <input type="text" placeholder="Username"/>
-              <input type="password" placeholder="Password"/>
-              <button>login</button>
+            <form class="login-form" @submit.prevent="로그인">
+              <input type="text" placeholder="Username" v-model="username"/>
+              <input type="password" placeholder="Password" v-model="password"/>
+              <button type="submit">login</button>
               <p class="message fw-normal" style="margin-top:30px;">처음 방문하셨나요? <button class="btnCustom" @click.prevent="회원가입창열기();">회원가입</button></p>
             </form>
         </div>
@@ -19,13 +19,32 @@
 
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   name: "Login",
+  data () {
+    return {
+      username: '',
+      password: '',
+    }
+  },
   components: {},
   methods : {
-    ...mapMutations(['로그인창열기','회원가입창열기'])
+    ...mapMutations(['로그인창열기','회원가입창열기']),
+    ...mapActions(['로그인전송']),
+
+    로그인() {
+      const credentials = { username:this.username, password:this.password };
+      this.로그인전송(credentials)
+      .then(() => {
+        console.log('로그인 성공')
+        // 여기서의 처리는 스토어의 뮤테이션 커밋 이후에 일어남 (찐 성공, 리디렉션이나 UI처리 등등..)
+      })
+      .catch(error => {
+        console.error('로그인 시도 오류', error)
+      })
+    }
   },
 };
 </script>

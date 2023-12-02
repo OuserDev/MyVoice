@@ -80,7 +80,7 @@ export default createStore({
 
     회원가입전송(context, userData) {
       return axios
-      .post('https://localhost:3000/register', userData)
+      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/register`, userData)
       .then(response => {
         context.commit('회원가입 뮤테이션 처리 작성해야함', response.data);
       })

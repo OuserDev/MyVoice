@@ -10,10 +10,12 @@ router.get('/', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const username = req.body.id;
-        const password = req.body.pw;
-        const confirm_password = req.body.repass;
-        const email = req.body.name;
+
+        console.log("데이터 받아짐", req.body.username);
+        const username = req.body.username;
+        const password = req.body.password;
+        const confirm_password = req.body.passwordReconfirm;
+        const email = req.body.email;
 
         // 비밀번호 확인
         if (password !== confirm_password) {
@@ -31,8 +33,10 @@ router.post('/register', async (req, res) => {
             }
 
             // 성공적으로 데이터가 저장됐을 때의 응답
-            res.send(`User ${username} registered with email ${email}`);
+
         });
+        res.send(`User ${username} registered with email ${email}`);
+        console.log("윤딕건 회원가입 성공");
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
@@ -65,6 +69,7 @@ router.post('/login', async (req, res) => {
         }
 
         // 로그인 성공 처리
+        console.log("로그인 성공함: ", username)
         res.send('Login successful');
     } catch (err) {
         console.error(err);

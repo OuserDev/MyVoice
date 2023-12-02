@@ -67,7 +67,7 @@ export default createStore({
     로그인전송(context, credentials) {
       // return을 작성하는 이유는, 컴포넌트의 로그인 함수로 전달해줘야하기 때문임.
       return axios
-      .post('https://localhost:3000/login', credentials)
+      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
       .then(response => {
         context.commit('로그인 뮤테이션 처리 작성해야함', response.data);
         // 여기서의 처리가 컴포넌트의 로그인 method 성공 수행보다 이전에 일어남

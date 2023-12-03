@@ -25,11 +25,11 @@ import { createToast } from "mosha-vue-toastify";
 export default {
   name: "Signup",
   setup() {
-    const errorToast = () => {
+    const errorToast = (errorMessage) => {
       createToast(
         {
-          title: "회원가입 오류!",
-          description: "",
+          title: "회원가입 실패 !",
+          description: errorMessage,
         },
         {
           type: "danger",
@@ -45,8 +45,8 @@ export default {
     const successToast = () => {
       createToast(
         {
-          title: "회원가입 성공!",
-          description: "환영합니다 :D",
+          title: "회원가입 성공 !",
+          description: "환영합니다 :D 로그인을 진행해주세요 !",
         },
         {
           position: "top-right",
@@ -74,20 +74,22 @@ export default {
     ...mapMutations(['회원가입창열기', '로그인창열기']),
     ...mapActions(['회원가입전송']),
     회원가입() {
-      const signUpData = { 
+      const userData = { 
         username: this.username,
         password: this.password,
         passwordReconfirm: this.passwordReconfirm,
         email: this.email
       };
-      this.회원가입전송(signUpData)
+      this.회원가입전송(userData)
+
       .then(() => {
         console.log('회원가입 성공');
         this.successToast();
+
       })
       .catch(error => {
         console.error('회원가입 시도 오류', error);
-        this.errorToast();
+        this.errorToast(error.message);
       })
     }
   }

@@ -8,7 +8,8 @@ export default createStore({
       convert_status: 1,
       회원가입창상태: 0,
       보이스셋리스트: [],
-      로그인상태: 0,
+      isLoggedIn: false,
+      userInfo: {},
 		}
 	},
   getters: {
@@ -47,6 +48,15 @@ export default createStore({
     set보이스셋리스트 (state,data) {
       state.보이스셋리스트 = data.data;
       // console.log('set보이스셋리스트가 호출되었습니다:', state.보이스셋리스트);
+    },
+    로그인창닫기(state, data) {
+      state.로그인창상태 = 0
+    },
+    setLoginState(state, status) {
+      state.isLoggedIn = status;
+    },
+    setUserInfo(state, status) {
+      state.userInfo = status;
     }
 },
   actions: {
@@ -63,14 +73,27 @@ export default createStore({
           console.log("데이터 불러오기 실패");
         });
       },
-
-    로그인전송(context, credentials) {
-      // return을 작성하는 이유는, 컴포넌트의 로그인 함수로 전달해줘야하기 때문임.
-      return axios
-      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
+    test() {
+      axios
+      .get("https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/list")
       .then(response => {
-        context.commit('로그인 뮤테이션 처리 작성해야함', response.data);
-        // 여기서의 처리가 컴포넌트의 로그인 method 성공 수행보다 이전에 일어남
+        console.log("성공",response.data);
+      })
+      .catch(error => {
+        console.log("실패");
+      });
+    },
+    로그인전송(context, credentials) {
+      return axios
+      // .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
+      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
+      .then(response => {
+        const userInfo = response.data.user;
+        context.commit('setLoginState', document.cookie.includes('sessionId'));
+        console.log('setLoginState:', context.state.isLoggedIn);
+        context.commit('setUserInfo', userInfo);
+        console.log('setUserInfo:', context.state.userInfo);
+        return userInfo;
       })
       .catch(error => {
         console.error('로그인전송 오류',error);
@@ -80,9 +103,10 @@ export default createStore({
 
     회원가입전송(context, userData) {
       return axios
-      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/register`, userData)
+      // .post(`${process.env.VUE_APP_BACKEND_URL}/auth/register`, userData)
+      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
       .then(response => {
-        context.commit('회원가입 뮤테이션 처리 작성해야함', response.data);
+        context.commit('로그인창열기');
       })
       .catch(error => {
         console.error('회원가입전송 오류',error);

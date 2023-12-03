@@ -6,15 +6,36 @@ const bcrypt = require('bcryptjs');
 
 
 router.get('/write', (req, res) => {
-    res.sendFile(path.join(__dirname, 'board.html'));  // 'board.html' 파일의 경로 설정
+    res.sendFile(path.join(__dirname, 'board.htm'));  // 'board.html' 파일의 경로 설정
 });
 
 router.post('/board', async (req, res) => {
-    // 게시글 생성 로직 : C
+    const title = req.body.title;
+    const content = req.body.content;
+    const writer = req.session.username; //프론트에 동적으로 출력
+    const file_src = req.body.file_src;
+
+    console.log("제목은 : "+title+"내용은 :  "+content+"인 게시글이 들어왔어요");
+    const query = 'INSERT INTO board (title, content, writer,file_src) VALUES ( ?, ?, ?, ?)';
+    db.query(query, [title, content,file_src], (err, results) => {
+        if (err) {
+            throw err;
+        }
+    })
+
 });
 
 router.get('/board', async (req, res) => {
-    // 모든 게시글 조회 로직 : R
+    try {
+        const query = 'SELECT * FROM board';
+        const results = await db.query(query);
+
+        // 조회된 결과를 프론트엔드로 전송 (여기서는 JSON 형태로 전송)
+        res.json(results);
+    } catch (err) {
+        console.error('Error fetching data:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 router.get('/board/:id', async (req, res) => {

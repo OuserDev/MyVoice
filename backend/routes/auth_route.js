@@ -1,8 +1,10 @@
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const db = require('../server/models/database');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html')); // 'index.html' 파일의 경로를 설정하세요.
@@ -71,11 +73,19 @@ router.post('/login', async (req, res) => {
         // 로그인 성공 처리
         console.log("로그인 성공함: ", username)
         res.send('Login successful');
+        req.session.username = username;
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
     }
+
 });
+
+router.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+  }));
 
 router.post('/logout', (req, res) => {
     // 세션을 사용하는 경우 세션 정보를 삭제

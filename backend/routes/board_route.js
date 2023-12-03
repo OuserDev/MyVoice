@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
     try {
         const query = 'SELECT * FROM board';
         const results = await db.query(query);
-        console.log("결과는 ", results[0] );
+        console.log("결과느은~ ", results[0] );
 
         // 조회된 결과를 프론트엔드로 전송 (여기서는 JSON 형태로 전송)
         //res.json(results);

@@ -54,8 +54,8 @@ router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // 데이터베이스에서 사용자 검색
-        const query = 'SELECT * FROM myvoice WHERE username = ?';
+        // 데이터베이
+        const query = 'SELECT * FROM myvoice WHERE username = 스에서 사용자 검색?';
         const [users] = await db.query(query, [username]);
 
         // 사용자가 존재하지 않으면 에러 처리

@@ -19,7 +19,8 @@
         <img src="@/assets/logo/carousel1.jpg" class="d-block w-100" alt="...">
         <div class="container">
           <div class="carousel-caption text-start ">
-            <h1 class="fw-bold">당신의 상상sdfasdafasdf력을 펼쳐보세요!</h1>
+            <h1 class="fw-bold">당신의 상상력을 펼쳐보세요!</h1>
+            <button @click="test()">ㅁㄴㅇㄹ</button>
             <p>MyVoice에서는 당신의 맞춤형 콘텐츠 제공을 위해 최선을 다하겠습니다.</p>
             <p><router-link class="btn btn-lg btn-primary my-custom-button rounded" to="/convert">Let's MV!</router-link></p>
           </div>
@@ -30,7 +31,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1 class="fw-bold">색다른 경험을 시작해보세요!</h1>
-            <p>AI XXX 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
+            <p>AI RVC 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
             <p><a class="btn btn-lg btn-primary my-custom-button rounded" href="#">자세히 보기</a></p>
           </div>
         </div>
@@ -124,7 +125,7 @@
 
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations,mapActions } from 'vuex'
 
 import Animation from '../components/Animation_main_text.vue';
 import wave from '../components/Animation_main_wave.vue';
@@ -144,6 +145,7 @@ export default {
     });
   },
   methods : {
+    ...mapActions(['test']),
     ...mapMutations(['회원가입창열기'])
   }
 };

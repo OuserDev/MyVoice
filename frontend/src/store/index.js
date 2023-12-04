@@ -12,6 +12,8 @@ export default createStore({
       boardList: [],
       보이스셋리스트: [],
       선택한카드: "",
+      viewStatus: 0,
+      선택한게시물: {},
 		}
 	},
   getters: {
@@ -71,6 +73,16 @@ export default createStore({
       state.선택한카드 = selectCard;
       console.log("선택:", state.선택한카드);
     },
+    setViewStatus(state, post) {
+      if (state.viewStatus == 0) {
+        state.viewStatus = 1;
+        state.선택한게시물 = post;
+        console.log(post);
+      } else {
+        state.viewStatus = 0;
+        state.선택한게시물 = undefined;
+      }
+    }
 },
   actions: {
     get보이스셋리스트(context) {

@@ -44,7 +44,7 @@
             <tbody>
               <tr v-for="post in boardList" :key="post.id">
                 <td>{{ post.id }}</td>
-                <td class="fw-bold">{{ post.title }}</td>
+                <td class="fw-bold" @click="setViewStatus(post)">{{ post.title }}</td>
                 <td>{{ post.createdAt }}</td>
                 <td>{{ post.writer }}</td>
                 <td>{{ post.viewCount }}</td>
@@ -63,7 +63,6 @@
               </li>
               <li class="page-item"><a class="page-link" href="#">1</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
@@ -78,15 +77,16 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   components: {},
   computed: {
-    ...mapState(["boardList"]),
+    ...mapState(["boardList", "viewStatus"]),
   },
   methods: {
     ...mapActions(["get게시물목록"]),
+    ...mapMutations(["setViewStatus"]),
   },
   created() {
     this.get게시물목록();

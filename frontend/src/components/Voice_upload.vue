@@ -10,7 +10,7 @@
             }}</span>
             아티스트 목소리로 음성을 변환해볼까요 ?<br />
           </h2>
-          <h3>사람의 목소리가 담겨진 음성 파일을 올려주세요 ! (MP3, WAV)</h3>
+          <h3>사람의 목소리가 담겨진 음성 오디오 파일을 올려주세요 !</h3>
           <div class="mt-5">
             <p>MyVoice에서는 현재 오직 순수한 음성 파일만을 지원합니다.</p>
             <p>노래를 부르게 하고 싶다면, 음원에서 배경음악을 제거후 업로드 바랍니다.</p>
@@ -21,16 +21,21 @@
           <FileUpload
             name="demo[]"
             url="./upload.php"
-            @upload="onAdvancedUpload($event)"
+            @before-upload="onAdvancedUpload($event)"
+            @select="choose"
+            @remove="삭제"
+            accept="audio/*"
             :multiple="false"
             :maxFileSize="100000000"
+            auto="true"
+            :fileLimit="1"
             :pt="{
               content: { class: 'surface-ground' },
             }"
           >
             <template #empty>
-              <p class="fw-bold">[Support Drag & Drop]</p>
-              <p>이곳에 PC 파일을 끌어와 놓아보세요!</p>
+              <p>[Support Drag & Drop]</p>
+              <p class="fw-bold">이곳에 PC 파일을 끌어와 놓아보세요!</p>
             </template>
           </FileUpload>
         </div>
@@ -42,8 +47,66 @@
 <script>
 import FileUpload from "primevue/fileupload";
 import { mapState } from "vuex";
+import { createToast } from "mosha-vue-toastify";
 
 export default {
+  data() {
+    return {
+      파일업로드상태: false,
+    }
+  },
+  setup() {
+    const errorToast = (filename) => {
+      createToast(
+        {
+          title: filename + "파일 업로드 실패!",
+          description: "이미 한 개의 음성 파일을 업로드 하였습니다.",
+        },
+        {
+          type: "danger",
+          position: "top-center",
+          transition: "slide",
+          timeout: 3000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    const successToast = (fileName) => {
+        createToast(
+        {
+          title: fileName + " 파일 업로드 완료!",
+          description: "다음 STEP으로 이동해볼까요? (두근두근)",
+        },
+        {
+          position: "top-center",
+          type: "success",
+          transition: "bounce",
+          timeout: 6000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    return { errorToast, successToast };
+  },
+  methods : {
+    삭제(event) {
+      this.파일업로드상태 = false; // 업로드 상태를 false로 설정합니다.
+    },
+    choose(event) {
+      const fileName = event.files[0].name;
+      if (this.파일업로드상태 === true) {
+        this.errorToast(fileName);
+        return false;
+      } else {
+        this.파일업로드상태 = true;
+        this.successToast(fileName);
+      }
+    },
+  },
   components: {
     FileUpload,
   },

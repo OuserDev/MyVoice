@@ -93,7 +93,7 @@ export default {
   .b-example-vr {
   flex-shrink: 0;
   width: 1.5rem;
-  height: 100vh;
+  height: 90vh;
   }
 
   .bi {

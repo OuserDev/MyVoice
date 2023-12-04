@@ -8,7 +8,7 @@
       </div>
 
       <!-- board seach area -->
-      <div id="board-search">
+      <!-- <div id="board-search">
         <div class="container">
           <div class="search-window">
             <form action="">
@@ -26,7 +26,7 @@
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- board list area -->
       <div id="board-list">
@@ -34,43 +34,27 @@
           <table class="board-table">
             <thead>
               <tr>
-                <th scope="col" class="th-num">번호</th>
+                <th scope="col" class="th-num">글번호</th>
                 <th scope="col" class="th-title">제목</th>
                 <th scope="col" class="th-date">등록일</th>
                 <th scope="col" class="th-date">작성자</th>
+                <th scope="col" class="th-num">조회수</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>3</td>
-                <th>
-                  <a href="#!">[공지사항] 개인정보 처리방침 변경안내처리방침</a>
-                  <p>테스트</p>
-                </th>
-                <td>2017.07.13</td>
-                <td>갸수랑</td>
-              </tr>
-
-              <tr>
-                <td>2</td>
-                <th>
-                  <a href="#!">공지사항 안내입니다. 이용해주셔서 감사합니다</a>
-                </th>
-                <td>2017.06.15</td>
-                <td>하하</td>
-              </tr>
-
-              <tr>
-                <td>1</td>
-                <th>
-                  <a href="#!">공지사항 안내입니다. 이용해주셔서 감사합니다</a>
-                </th>
-                <td>2017.06.15</td>
-                <td>똥개</td>
+              <tr v-for="post in boardList" :key="post.id">
+                <td>{{ post.id }}</td>
+                <td class="fw-bold">{{ post.title }}</td>
+                <td>{{ post.createdAt }}</td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.viewCount }}</td>
               </tr>
             </tbody>
           </table>
-          <nav aria-label="Page navigation example" class="d-flex align-items-center justify-content-center mt-5">
+          <nav
+            aria-label="Page navigation example"
+            class="d-flex align-items-center justify-content-center mt-5"
+          >
             <ul class="pagination">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -94,8 +78,19 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   components: {},
+  computed: {
+    ...mapState(["boardList"]),
+  },
+  methods: {
+    ...mapActions(["get게시물목록"]),
+  },
+  created() {
+    this.get게시물목록();
+  }
 };
 </script>
 

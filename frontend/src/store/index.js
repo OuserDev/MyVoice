@@ -5,12 +5,13 @@ export default createStore({
   state(){
 		return {
 			로그인창상태: 0,
-      convert_status: 1,
       회원가입창상태: 0,
+      convert_status: 1,
       isLoggedIn: false,
       userInfo: {},
       boardList: [],
       보이스셋리스트: [],
+      선택한카드: "",
 		}
 	},
   getters: {
@@ -62,7 +63,14 @@ export default createStore({
     setBoardList(state, posts) { 
       const sortedPost = posts.sort((a, b) => b.id - a.id);
       state.boardList = sortedPost;
-    }
+    },
+    upCountConvertStatus(state) { 
+      state.convert_status += 1;
+    },
+    set선택한카드(state, selectCard) { 
+      state.선택한카드 = selectCard;
+      console.log("선택:", state.선택한카드);
+    },
 },
   actions: {
     get보이스셋리스트(context) {

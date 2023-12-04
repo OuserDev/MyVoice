@@ -21,7 +21,7 @@
         <card class="col-md-4" :카드정보="this.selectCard">
         </card>
         <div class="p-4 col-md fw-bold">
-          <div class="row text-black fw-bold">{{ selectCard.info }}</div>
+          <div class="row text-black">{{ selectCard.info }}</div>
           <hr class="featurette-divider my-3"> 
             <div class="row p-md-3 icon-demo-examples">
               <div class="customColor fs-5 text-black">
@@ -47,7 +47,7 @@ import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import card from "@/components/card.vue";
-import { mapState } from 'vuex';
+import { mapState,mapMutations } from 'vuex';
 
 export default defineComponent({
   name: 'Autoplay',
@@ -73,6 +73,7 @@ export default defineComponent({
     ...mapState(['보이스셋리스트']),
   },
   methods : {
+    ...mapMutations(['set선택한카드']),
     stopAutoplay() {
       if (this.autoplayInterval == 2000) {
         this.autoplayInterval = 0;
@@ -82,10 +83,18 @@ export default defineComponent({
         this.selectCardStatus = 0;
       }
     },
-    클릭카드정보(카드정보, color) {
+    클릭카드정보(카드정보) {
       this.selectCard = 카드정보;
+      this.set선택한카드(this.selectCard);
     },
-  }
+    카드상세상태변경() {
+      if (this.selectCardStatus === 0) {
+        this.selectCardStatus = 1;
+      } else {
+        this.selectCardStatus = 0;
+      };
+    }
+  },
 })
 </script>
 

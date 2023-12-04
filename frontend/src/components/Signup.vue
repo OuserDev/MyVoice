@@ -74,20 +74,21 @@ export default {
     ...mapMutations(['회원가입창열기', '로그인창열기']),
     ...mapActions(['회원가입전송']),
     회원가입() {
-      const signUpData = { 
+      const userData = { 
         username: this.username,
         password: this.password,
         passwordReconfirm: this.passwordReconfirm,
         email: this.email
       };
-      this.회원가입전송(signUpData)
+      this.회원가입전송(userData)
       .then(() => {
         console.log('회원가입 성공');
         this.successToast();
       })
       .catch(error => {
         console.error('회원가입 시도 오류', error);
-        this.errorToast();
+        const errorMessage = error.response && error.response.data ? error.response.data : '회원가입 중 오류 발생';
+        this.errorToast(errorMessage);
       })
     }
   }

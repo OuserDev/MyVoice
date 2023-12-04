@@ -10,8 +10,6 @@ router.get('/', (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-
-        console.log("데이터 받아짐", req.body.username);
         const username = req.body.username;
         const password = req.body.password;
         const confirm_password = req.body.passwordReconfirm;
@@ -22,26 +20,39 @@ router.post('/register', async (req, res) => {
             return res.status(400).send('Passwords do not match.');
         }
 
+        // username이 이미 존재하는지 확인
+        const userCheckQuery = 'SELECT * FROM signup WHERE username = ?';
+        const userData = await new Promise((resolve, reject) => {
+            db.query(userCheckQuery, [username], (err, results) => {
+                if (err) return reject(err);
+                resolve(results);
+            });
+        });
+
+        if (userData.length > 0) {
+            console.log("이미 존재하는 아이디야");
+            return res.status(400).send('이미 존재하는 아이디 입니다.');
+        }
+
         // 비밀번호 해시
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // 데이터베이스에 사용자 정보 저장
-        const query = 'INSERT INTO myvoice (username, password, email) VALUES (?, ?, ?)';
+        const query = 'INSERT INTO signup (username, password, email) VALUES (?, ?, ?)';
         db.query(query, [username, hashedPassword, email], (err, results) => {
             if (err) {
                 throw err;
             }
 
-            // 성공적으로 데이터가 저장됐을 때의 응답
-
+            res.send(`User ${username} registered with email ${email}`);
+            console.log("윤딕건 회원가입 성공");
         });
-        res.send(`User ${username} registered with email ${email}`);
-        console.log("윤딕건 회원가입 성공");
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
     }
 });
+
 
 router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html')); // 'index.html' 파일의 경로를 설정하세요.
@@ -53,7 +64,7 @@ router.post('/login', async (req, res) => {
         const { username, password } = req.body;
 
         // 데이터베이스에서 사용자 검색
-        const query = 'SELECT * FROM myvoice WHERE username = ?';
+        const query = 'SELECT * FROM signup WHERE username = ?';
         const [users] = await db.query(query, [username]);
 
         // 사용자가 존재하지 않으면 에러 처리
@@ -64,13 +75,22 @@ router.post('/login', async (req, res) => {
         // 비밀번호 확인
         const user = users[0];
         const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword) {
+
+        if (validPassword) {
+            // 세션에 사용자 정보 저장
+            req.session.user = { id: user.id, username: user.username };
+            console.log("로그인 성공함: ", username);
+
+            // 클라이언트에 성공 응답 전송
+            res.send('Login successful');
+        } else {
+            // 로그인 실패 처리
             return res.status(401).send('Invalid username or password');
         }
-
         // 로그인 성공 처리
         console.log("로그인 성공함: ", username)
-        res.send('Login successful');
+
+        // 세션 얹어서 뷰단에 보내기
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

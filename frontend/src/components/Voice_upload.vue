@@ -3,11 +3,19 @@
     <XyzTransition xyz="fade up-50% duration-15" :appear-visible="true">
       <div class="text-dark" v-if="true">
         <div class="mb-5">
-          <h2 class="fw-bold">방금 선택해주신 목소리로 음원을 변환해볼까요 ?<br></h2>
-
-          <h3>
-            노래, 녹음, 강의 등등 사람의 목소리가 담겨진 목소리 파일을 올려주세요 !
-          </h3>
+          <h2 class="fw-bold">
+            방금 선택해주신
+            <span :style="`color: ${선택한카드.selectColor}`">{{
+              선택한카드.voice_name
+            }}</span>
+            아티스트 목소리로 음성을 변환해볼까요 ?<br />
+          </h2>
+          <h3>사람의 목소리가 담겨진 음성 파일을 올려주세요 ! (MP3, WAV)</h3>
+          <div class="mt-5">
+            <p>MyVoice에서는 현재 오직 순수한 음성 파일만을 지원합니다.</p>
+            <p>노래를 부르게 하고 싶다면, 음원에서 배경음악을 제거후 업로드 바랍니다.</p>
+            <p>추후 해당 부분에 관하여, 좀 더 나은 서비스로 찾아뵙겠습니다 :)</p>
+          </div>
         </div>
         <div class="mb-5">
           <FileUpload
@@ -15,14 +23,15 @@
             url="./upload.php"
             @upload="onAdvancedUpload($event)"
             :multiple="true"
-            accept="image/*"
+            accept="voice/*"
             :maxFileSize="100000000"
             :pt="{
               content: { class: 'surface-ground' },
             }"
           >
             <template #empty>
-              <p>Drag and drop files to here to upload.</p>
+              <p class="fw-bold">[Support Drag & Drop]</p>
+              <p>이곳에 PC 파일을 끌어와 놓아보세요!</p>
             </template>
           </FileUpload>
         </div>
@@ -33,10 +42,14 @@
 
 <script>
 import FileUpload from "primevue/fileupload";
+import { mapState } from "vuex";
 
 export default {
   components: {
     FileUpload,
+  },
+  computed: {
+    ...mapState(["선택한카드"]),
   },
 };
 </script>
@@ -57,11 +70,10 @@ export default {
   color: #4b5563; /* text-gray-700 */
   padding: 20px; /* p-5 */
   border: 1px solid #e5e7eb; /* border-gray-300 */
-  border-radius: 0.5rem 0.5rem 0 0 ; /* rounded-tr-lg rounded-tl-lg */
+  border-radius: 0.5rem 0.5rem 0 0; /* rounded-tr-lg rounded-tl-lg */
   gap: 8px; /* gap-2 */
   border-bottom: none; /* border-b-0 */
 }
-
 
 .p-fileupload-content {
   position: relative;
@@ -69,7 +81,7 @@ export default {
   color: #4b5563; /* text-gray-700 */
   padding: 32px; /* p-8 */
   border: 1px solid #e5e7eb; /* border-gray-300 */
-  border-radius: 0 0 0.75rem 0.75rem ; /* rounded-b-lg */
+  border-radius: 0 0 0.75rem 0.75rem; /* rounded-b-lg */
 }
 
 .p-fileupload-file {

@@ -99,6 +99,7 @@ export default createStore({
           console.log("게시물 목록 데이터 불러오기 실패");
         });
       },
+      
     로그인전송(context, credentials) {
       return axios
       .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)

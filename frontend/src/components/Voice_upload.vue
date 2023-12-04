@@ -22,8 +22,7 @@
             name="demo[]"
             url="./upload.php"
             @upload="onAdvancedUpload($event)"
-            :multiple="true"
-            accept="voice/*"
+            :multiple="false"
             :maxFileSize="100000000"
             :pt="{
               content: { class: 'surface-ground' },
@@ -55,6 +54,10 @@ export default {
 </script>
 
 <style>
+.p-fileupload-file-thumbnail {
+  display: none;
+}
+
 .p-fileupload {
   background-color: #ffffff; /* 배경색을 흰색으로 변경 */
   border: 1px solid #dddddd; /* 테두리 색상을 연한 회색으로 변경 */

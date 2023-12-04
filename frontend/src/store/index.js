@@ -99,10 +99,11 @@ export default createStore({
           console.log("게시물 목록 데이터 불러오기 실패");
         });
       },
+      
     로그인전송(context, credentials) {
-      return axiosㅖ
-      // .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
-      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
+      return axios
+      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
+      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
       .then(response => {
         const userInfo = response.data.user;
         context.commit('setLoginState', document.cookie.includes('sessionId'));
@@ -119,8 +120,8 @@ export default createStore({
 
     회원가입전송(context, userData) {
       return axios
-      // .post(`${process.env.VUE_APP_BACKEND_URL}/auth/register`, userData)
-      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
+      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/register`, userData)
+      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
       .then(response => {
         context.commit('로그인창열기');
       })

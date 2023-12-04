@@ -17,6 +17,7 @@
   <XyzTransition appear xyz="fade up-50%">
   <div class="container-fluid text-white" v-if="this.selectCardStatus===1">
     <div class="container pb-5 row" style="width: 800px;">
+      <h1 class="fw-bold text-white"><p class="gradient-text">선택한 목소리 데이터셋</p></h1>
       <div class="customCard row px-0" :style="{ borderColor: selectCard.selectColor }">
         <card class="col-md-4" :카드정보="this.selectCard">
         </card>
@@ -86,12 +87,14 @@ export default defineComponent({
     클릭카드정보(카드정보) {
       this.selectCard = 카드정보;
       this.set선택한카드(this.selectCard);
+      this.카드상세상태변경();
     },
     카드상세상태변경() {
       if (this.selectCardStatus === 0) {
         this.selectCardStatus = 1;
       } else {
         this.selectCardStatus = 0;
+        this.set선택한카드("");
       };
     }
   },

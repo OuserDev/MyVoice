@@ -74,7 +74,6 @@ export default {
     ...mapActions(['회원가입전송']),
     회원가입() {
       const userData = { 
-      const userData = { 
         username: this.username,
         password: this.password,
         passwordReconfirm: this.passwordReconfirm,

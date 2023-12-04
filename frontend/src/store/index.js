@@ -7,9 +7,10 @@ export default createStore({
 			로그인창상태: 0,
       convert_status: 1,
       회원가입창상태: 0,
-      보이스셋리스트: [],
       isLoggedIn: false,
       userInfo: {},
+      boardList: [],
+      보이스셋리스트: [],
 		}
 	},
   getters: {
@@ -57,6 +58,10 @@ export default createStore({
     },
     setUserInfo(state, status) {
       state.userInfo = status;
+    },
+    setBoardList(state, posts) { 
+      const sortedPost = posts.sort((a, b) => b.id - a.id);
+      state.boardList = sortedPost;
     }
 },
   actions: {
@@ -70,21 +75,24 @@ export default createStore({
           context.commit('set보이스셋리스트', response.data);
         })
         .catch(error => {
-          console.log("데이터 불러오기 실패");
+          console.log("목소리 데이터셋 불러오기 실패");
         });
       },
-    test() {
-      axios
-      .get("https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/list")
-      .then(response => {
-        console.log("성공",response.data);
-      })
-      .catch(error => {
-        console.log("실패");
-      });
-    },
+    get게시물목록(context) {
+      // actions에서 commit을 사용할거면, context를 parameter로 받아야함
+        axios
+        .get('/example_board.json')
+        .then(response => {
+          // console.log(response.data);
+          // console.log("성공");
+          context.commit('setBoardList', response.data);
+        })
+        .catch(error => {
+          console.log("게시물 목록 데이터 불러오기 실패");
+        });
+      },
     로그인전송(context, credentials) {
-      return axios
+      return axiosㅖ
       // .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
       .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
       .then(response => {

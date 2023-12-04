@@ -17,7 +17,6 @@
   </div>
 </template>
 
-
 <script>
 import { mapMutations,mapActions } from 'vuex'
 import { createToast } from "mosha-vue-toastify";

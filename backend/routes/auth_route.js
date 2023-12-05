@@ -34,6 +34,7 @@ router.post('/register', async (req, res) => {
             console.error('Password hashing error', err);
             return res.status(500).send('인터넷 서버문제로 해시값이 생성이 되지 않았어');
         }
+        console.log(hashedPassword)
  
         // 데이터베이스에 사용자 정보 저장
         const query = 'INSERT INTO signup (username, password, email) VALUES (?, ?, ?)';

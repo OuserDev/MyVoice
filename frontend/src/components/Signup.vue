@@ -93,7 +93,7 @@ export default {
           if (statusCode === 409) {
             this.errorToast("이미 사용 중인 아이디입니다.");
           } else if (statusCode === 500) {
-            this.errorToast("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
+            this.errorToast("이메일 양식이 맞지 않습니다. ");
           } else {
             this.errorToast("사용자의 아이디가 없습니다.");
           }

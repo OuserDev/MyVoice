@@ -92,7 +92,7 @@
       <p class="lead mb-4 text-white">음성은 단순한 소리가 아니라, 감정과 생각을 그려낸 '도화지'입니다.<br>단 한 번의 클릭으로 나만의 독특한 음원을 창조하세요!<br>혁신적인 인공지능 기술이 만들어내는 놀라운 음성 변환의 세계로 초대합니다.<br>여러분의 이야기가 예술로 승화되는 순간을 함께하겠습니다!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <button type="button" class="btn btn-primary rounded px-4 my-custom-button" @click="회원가입창열기">Sign up</button>
-        <button type="button" class="btn btn-outline-secondary rounded px-4">문의하기</button>
+        <button type="button" class="btn btn-outline-secondary rounded px-4" @click="파일다운로드">문의하기</button>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 40vh;">
@@ -144,7 +144,7 @@ export default {
     });
   },
   methods : {
-    ...mapActions(['test']),
+    ...mapActions(['test',"파일다운로드"]),
     ...mapMutations(['회원가입창열기'])
   }
 };

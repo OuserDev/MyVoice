@@ -147,7 +147,22 @@ export default createStore({
         throw error;
       });
     },
-  },
+
+    파일다운로드(context) {
+      axios.get('http://localhost:3000/files/모놀로그.mp3', {
+        responseType: "blob"
+    }).then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', attachFileName); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+    }).catch(exception => {
+        alert("파일 다운로드 실패");
+    });
+  }
+},
   
   modules: {
   }

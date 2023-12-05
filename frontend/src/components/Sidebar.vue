@@ -5,7 +5,7 @@
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
       <div class="pt-5">
         <div class="fs-4 text-start">어서오세요,</div>
-        <div class="fs-3 text-start fw-bold">홍길동 <span class="fs-5 fw-normal">님!</span></div>
+        <div class="fs-3 text-start fw-bold">{{ userInfo.username }}<span class="fs-5 fw-normal">님!</span></div>
       </div>
     </a>
     <hr>
@@ -49,6 +49,7 @@
 <script>
 import { onMounted } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { mapState } from "vuex";
 
 export default {
   name: 'YourComponentName',
@@ -59,6 +60,9 @@ export default {
         new bootstrap.Tooltip(tooltipTriggerEl);
       });
     });
+  },
+  computed : {
+    ...mapState(['userInfo'])
   }
 };
 </script>

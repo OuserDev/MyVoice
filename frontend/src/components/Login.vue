@@ -11,17 +11,24 @@
       ></button>
       <div class="form">
         <h3 style="color: black; margin-bottom: 30px">로그인</h3>
-        <form class="login-form" @submit.prevent="로그인">
-          <input type="text" placeholder="Username" v-model="username" />
-          <input type="password" placeholder="Password" v-model="password" />
-          <button type="submit">login</button>
-          <p class="message fw-normal" style="margin-top: 30px">
-            처음 방문하셨나요?
-            <button class="btnCustom" @click.prevent="회원가입창열기()">
-              회원가입
-            </button>
-          </p>
-        </form>
+        <div v-if= "isUserInfoFilled(userInfo) === false">
+            <form class="login-form" @submit.prevent="로그인">
+              <input type="text" placeholder="Username" v-model="username" />
+              <input type="password" placeholder="Password" v-model="password" />
+              <button @submit.prevent="로그인">login</button>
+              <p class="message fw-normal" style="margin-top: 30px">
+                처음 방문하셨나요?
+                <button class="btnCustom" @click.prevent="회원가입창열기()">
+                  회원가입
+                </button>
+              </p>
+            </form>
+          </div>
+          <div v-else-if= "isUserInfoFilled(userInfo) === true">
+            <span class="text-black h3">환영합니다, <span class="fw-bold">{{ userInfo.username }}</span>님!</span>
+            <br>
+            <button type="submit" @click="로그아웃()">logout</button>
+          </div>
       </div>
     </div>
   </div>
@@ -72,19 +79,13 @@ export default {
     };
     return { errorToast, successToast };
   },
-  data() {
-    return {
-      username: "",
-      password: "",
-    };
-  },
   components: {},
   computed : {
     ...mapState(["userInfo"]),
   },
   methods: {
     ...mapMutations(["로그인창열기", "회원가입창열기", "로그인창닫기"]),
-    ...mapActions(["로그인전송"]),
+    ...mapActions(["로그인전송", "로그아웃"]),
 
     로그인() {
 
@@ -121,6 +122,14 @@ export default {
         }
         });
     },
+    isUserInfoFilled(obj) {
+      // 객체가 비어 있는지 확인한다. 비어 있으면 false 반환
+      if (Object.keys(obj).length === 0) {
+        return false;
+      }
+      // 객체의 모든 키에 대해 값이 truthy인지 확인한다.
+      return Object.keys(obj).every(key => obj[key]);
+    }
   },
 };
 </script>

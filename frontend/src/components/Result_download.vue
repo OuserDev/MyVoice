@@ -19,8 +19,23 @@
       </div>
 
       <div xyz="fade up-100% duration-5" class="text-dark mb-5 pb-5" v-if="result == 1">
-        <h1 class="fw-bold mb-5">결과가 나왔습니다!</h1>
-      </div>
+        <div>
+          <h1 class="fw-bold mb-3">결과가 나왔습니다 !</h1>
+          <h2 class="mb-5">기다려주셔서 감사해요 !</h2>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+          <img :src="getImagePath(선택한카드.voice_name)" class="custom-img-size img-fluid" alt="...">
+        </div>
+        <div class="mt-4 gradient-text">
+          <span class=" h3 fw-bold">[MyVoice_Result] {{선택한카드.voice_name}}_{{업로드한음원}}</span>
+        </div>
+        <div class="mt-5">
+          <button class="btn-lg fw-bold" @click="파일다운로드">클릭하면 다운로드 돼요!</button>
+        </div>
+        <div class="mt-3">
+          <router-link class="btn-lg" to="/">처음으로</router-link>
+        </div>
+      </div>    
 
     </XyzTransition>
 
@@ -28,7 +43,7 @@
 </template>
 
 <script>
-import { mapState,mapMutations } from "vuex";
+import { mapState,mapMutations,mapActions } from "vuex";
 
 export default {
   data() {
@@ -38,10 +53,14 @@ export default {
     }
   },
   methods : {
+    ...mapActions(['파일다운로드']),
     ...mapMutations(['set업로드한음원']),
+    getImagePath(name) {
+        return require(`@/assets/datasets/${name}.jpg`);
+    },
   },
   computed: {
-    ...mapState(["선택한카드", "업로드한음원"]),
+    ...mapState(["선택한카드", "업로드한음원", "fileName"]),
   },
   components: {
   },
@@ -58,14 +77,19 @@ export default {
       if (this.result === 0) {
         this.result = 1;
       }
-    }, 15000); // 3초(3000밀리초)마다 호출 // 3초(3000밀리초)마다 호출
+    }, 23000); // 3초(3000밀리초)마다 호출 // 3초(3000밀리초)마다 호출
   },
 };
 </script>
 
 <style>
+.custom-img-size {
+  width: 300px;  /* 원하는 너비 */
+  height: auto;  /* 높이를 auto로 설정하여 이미지의 비율을 유지 */
+}
+
 .gradient-text {
-    background: linear-gradient(to right, #7c7777, #1d73e4);
+    background: linear-gradient(to right, #a1a0a0, #4086e2);
     -webkit-background-clip: text;
     color: transparent;
 }

@@ -2,10 +2,9 @@
   <footer class="footer-custom py-4 bg-dark text-white"> 
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li> <!-- 텍스트 색상을 흰색으로 변경 -->
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Convert</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Community</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Customers</a></li>
       </ul>
       <p class="text-center text-white">&copy; 2023 Department of Multimedia Engineering, Andong University</p> <!-- 텍스트 색상을 흰색으로 변경 -->
     </footer>

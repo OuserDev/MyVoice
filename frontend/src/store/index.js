@@ -15,6 +15,7 @@ export default createStore({
       viewStatus: 0,
       선택한게시물: {},
       업로드한음원: "",
+      fileName: "",
 		}
 	},
   getters: {
@@ -88,6 +89,10 @@ export default createStore({
       state.업로드한음원 = 업로드한음원;
       console.log(state.업로드한음원);
     },
+    setFileName(state,fileName) { 
+      state.fileName = fileName;
+      console.log(state.fileName);
+    },
 },
   actions: {
     get보이스셋리스트(context) {
@@ -149,7 +154,12 @@ export default createStore({
     },
 
     파일다운로드(context) {
-      axios.get(`${process.env.VUE_APP_BACKEND_URL}/public/voice/윤석열_모놀로그.wav`, {
+      console.log(context.state.선택한카드);
+      console.log(context.state.업로드한음원);
+      const lastDotIndex = context.state.업로드한음원.lastIndexOf('.');
+      const transformName = context.state.업로드한음원.substring(0, lastDotIndex);
+
+      axios.get(`${process.env.VUE_APP_BACKEND_URL}/public/voice/${context.state.선택한카드.voice_name}_${transformName}.wav`, {
         responseType: 'blob'
       }).then(response => {
         const file = new Blob(
@@ -158,10 +168,12 @@ export default createStore({
         );
         
         const fileURL = URL.createObjectURL(file);
-        
+        const fileName = `[MyVoice_Result] ${context.state.선택한카드.voice_name}_${transformName}.wav`;
+        context.commit('setFileName',fileName);
+
         const fileLink = document.createElement('a');
         fileLink.href = fileURL;
-        fileLink.setAttribute('download', '모놀로그.mp3');
+        fileLink.setAttribute('download', fileName);
         document.body.appendChild(fileLink);
         fileLink.click();
         document.body.removeChild(fileLink); // Clean up

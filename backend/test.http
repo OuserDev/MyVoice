@@ -1,2 +1,2 @@
 ###
-GET http://localhost:3000/auth/
+GET http://localhost:3000/board/

@@ -1,0 +1,26 @@
+GET http://localhost:3000/board/update/6
+
+###
+
+PUT http://localhost:3000/board/update/6
+Content-Type: application/json; charset=UTF-8
+
+{
+    "title": "최태용제목6",
+    "content": "최태용본문6"
+}
+
+###
+DELETE  http://localhost:3000/board/delete/6
+
+###
+GET http://localhost:3000/board/6
+###
+
+POST http://localhost:3000/board/write
+Content-Type: application/json; charset=UTF-8
+
+{
+    "title": "예시 제목",
+    "content": "예시 본문"
+}

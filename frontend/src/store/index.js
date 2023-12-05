@@ -118,7 +118,7 @@ export default createStore({
     get게시물목록(context) {
       // actions에서 commit을 사용할거면, context를 parameter로 받아야함
         axios
-        .get('/example_board.json')
+        .get(`${process.env.VUE_APP_BACKEND_URL}/board`)
         .then(response => {
           // console.log(response.data);
           // console.log("성공");

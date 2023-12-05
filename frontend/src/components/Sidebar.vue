@@ -19,17 +19,15 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="#" class="nav-link active fw-bold" aria-current="page">
+          <button href="#" class="btn-lg my-custom-button" aria-current="page">
             글 작성하기
-          </a>
+          </button>
         </li>
       </ul>
       <hr>
     </div>
-    
 </div>
 
-  <div class="b-example-divider b-example-vr"></div>
 </main>
 </template>
 

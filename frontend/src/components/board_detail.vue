@@ -15,7 +15,9 @@
       </p>
     </div>
     <hr class="featurette-divider">
-    <button class="mt-5 btn-lg" @click="setViewStatus">글 목록</button>
+    <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="setViewStatus">글 수정</button>
+    <button class="mt-5 btn-lg my-custom-button" @click="setViewStatus">글 목록</button>
+    <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="글삭제요청(선택한게시물.id)">글 삭제</button>
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
     board,
   },
   computed: {
-    ...mapState(["viewStatus", "선택한게시물"]),
+    ...mapState(["viewStatus", "선택한게시물", "userInfo"]),
   },
   methods: {
     ...mapMutations(["setViewStatus"]),

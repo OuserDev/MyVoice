@@ -82,7 +82,7 @@ import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   components: {},
   computed: {
-    ...mapState(["boardList", "viewStatus"]),
+    ...mapState(["boardList", "viewStatus", "userInfo"]),
   },
   methods: {
     ...mapActions(["get게시물목록"]),

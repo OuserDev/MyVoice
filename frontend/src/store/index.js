@@ -118,7 +118,8 @@ export default createStore({
     get게시물목록(context) {
       // actions에서 commit을 사용할거면, context를 parameter로 받아야함
         axios
-        .get(`${process.env.VUE_APP_BACKEND_URL}/board`)
+        .get('/example_board.json')
+        //.get(`${process.env.VUE_APP_BACKEND_URL}/board`)
         .then(response => {
           // console.log(response.data);
           // console.log("성공");
@@ -131,8 +132,8 @@ export default createStore({
       
     로그인전송(context, credentials) {
       return axios
-      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
-      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
+      //.post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
+      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
       .then(response => {
         const userInfo = response.data.user;
         context.commit('setLoginState', document.cookie.includes('sessionId'));
@@ -158,6 +159,18 @@ export default createStore({
         console.error('회원가입전송 오류',error);
         throw error;
       });
+    },
+
+    글삭제요청(context, post_id) {
+      return axios
+      .delete(`${process.env.VUE_APP_BACKEND_URL}/delete/${post_id}`)
+      .then(response => {
+        context.dispatch('get게시물목록');
+        context.commit('setViewStatus');
+      })
+      .catch(error => {
+        console.log('못삭제했노')
+      })
     },
 
     파일다운로드(context) {

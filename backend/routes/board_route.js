@@ -19,10 +19,10 @@ router.post('/write', async (req, res) => {
   
       // 삽입된 게시글의 ID를 확인할 수 있음 (result.insertId)
   
-      res.status(200).json({ success: true, message: '게시글이 성공적으로 작성되었습니다.' });
+      res.status(200).send('업데이트 성공');
     } catch (error) {
       console.error('게시글 작성 오류:', error);
-      res.status(500).json({ success: false, error: '서버 오류' });
+      res.status(500).send('업데이트 실패');
     }
   });
 

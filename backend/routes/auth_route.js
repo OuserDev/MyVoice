@@ -18,6 +18,14 @@ router.post('/register', async (req, res) => {
         const password = req.body.password;
         const email = req.body.email;
 
+        // 아이디 중복확인
+        const checkUserQuery = 'SELECT * FROM signup WHERE username = ?';
+        const [existingUsers] = await db.execute(checkUserQuery, [username]);
+
+        if (existingUsers.length > 0) {
+            return res.status(409).send('이미 존재하는 사용자 이름입니다.'); // 중복된 사용자 이름
+        }
+        
         // 비밀번호 해시
         let hashedPassword;
         try {
@@ -63,7 +71,7 @@ router.post('/login', async (req, res) => {
         const [users] = await db.query(query, [username]);
 
         if (users.length === 0) {
-            res.status(400).send({ message: '존재하지 않는 사용자입니다.' });
+            res.status(401).send({ message: '존재하지 않는 사용자입니다.' });
             return;
         }
 
@@ -72,7 +80,7 @@ router.post('/login', async (req, res) => {
         // 비밀번호 검증 (bcrypt 사용 시)
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
-            res.status(400).send({ message: '비밀번호가 일치하지 않습니다.' });
+            res.status(401).send({ message: '비밀번호가 일치하지 않습니다.' });
             return;
         }
         console.log("들어옴1")

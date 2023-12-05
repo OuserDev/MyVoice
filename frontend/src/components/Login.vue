@@ -110,7 +110,7 @@ export default {
           } else if (statusCode === 500) {
             this.errorToast("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
           } else {
-            this.errorToast("알 수 없는 오류가 발생했습니다.");
+            this.errorToast("사용자의 아이디가 없습니다.");
           }
         } else if (error.request) {
           // 요청이 이루어졌으나 응답을 받지 못한 경우

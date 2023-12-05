@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-backend/public/voice/
 
 # local env files
 .env.local

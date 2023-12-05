@@ -92,8 +92,8 @@ export default {
           const statusCode = error.response.status;
           if (statusCode === 409) {
             this.errorToast("이미 사용 중인 아이디입니다.");
-          } else if (statusCode === 500) {
-            this.errorToast("이메일 양식이 맞지 않습니다. ");
+          } else if (statusCode === 401) {
+            this.errorToast("로그인에 실패하였습니다 (오류코드 : 세션 미생성) ");
           } else {
             this.errorToast("사용자의 아이디가 없습니다.");
           }

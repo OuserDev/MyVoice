@@ -5,7 +5,6 @@ const db = require('../server/models/database');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html')); // 'index.html' 파일의 경로를 설정하세요.
 });
@@ -66,6 +65,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
+
         console.log("들어옴1")
         // 데이터베이스에서 사용자 검색
         const query = 'SELECT * FROM signup WHERE username = ?';
@@ -75,26 +75,23 @@ router.post('/login', async (req, res) => {
             res.status(401).send({ message: '존재하지 않는 사용자입니다.' });
             return;
         }
+        
+        // 비밀번호 확인
+        const user = users[0];
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (validPassword) {
+            // 세션에 사용자 정보 저장
+            req.session.user = { id: user.id, username: user.username };
+            console.log("로그인 성공함: ", username);
+            const isLoggedIn = true;
 
-        const user = users[0]; // 첫 번째 사용자 정보 사용
-
-        // 비밀번호 검증 (bcrypt 사용 시)
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
-            res.status(401).send({ message: '비밀번호가 일치하지 않습니다.' });
-            return;
+            // 클라이언트에 성공 응답 전송
+            data = { user, isLoggedIn }
+            res.status(200).send(data);
+        } else {
+            // 로그인 실패 처리
+            return res.status(401).send('Invalid username or password');
         }
-        console.log("들어옴1")
-        console.log(user)
-        // 토큰 생성
-        // const token = tokenService.getToken(user.username); // 예: user.id 또는 user.username
-        // console.log(token)
-        data = {/*token,*/ user }
-        res.status(200).send(data);
-
-
-
-
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

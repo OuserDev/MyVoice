@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const mysql = require('mysql2/promise');
 const db = require('../server/models/database');
@@ -16,8 +17,22 @@ router.post('/register', async (req, res) => {
 
         const username = req.body.username;
         const password = req.body.password;
+        const passwordReconfirm = req.body.passwordReconfirm;
         const email = req.body.email;
 
+        // 아이디 중복확인
+        const checkUserQuery = 'SELECT * FROM signup WHERE username = ?';
+        const [existingUsers] = await db.execute(checkUserQuery, [username]);
+
+        if (existingUsers.length > 0) {
+            return res.status(400).send('이미 존재하는 사용자 이름입니다.'); // 중복된 사용자 이름
+        }
+        
+        // 비밀번호 재확인 검증
+        if (password !== passwordReconfirm) {
+            return res.status(409).send({ message: '검증 비밀번호가 일치하지 않습니다' });
+        }
+        
         // 비밀번호 해시
         let hashedPassword;
         try {
@@ -26,6 +41,7 @@ router.post('/register', async (req, res) => {
             console.error('Password hashing error', err);
             return res.status(500).send('인터넷 서버문제로 해시값이 생성이 되지 않았어');
         }
+        console.log(hashedPassword)
  
         // 데이터베이스에 사용자 정보 저장
         const query = 'INSERT INTO signup (username, password, email) VALUES (?, ?, ?)';
@@ -57,35 +73,38 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
+
         console.log("들어옴1")
         // 데이터베이스에서 사용자 검색
         const query = 'SELECT * FROM signup WHERE username = ?';
         const [users] = await db.query(query, [username]);
 
         if (users.length === 0) {
-            res.status(400).send({ message: '존재하지 않는 사용자입니다.' });
+            res.status(401).send({ message: '존재하지 않는 사용자입니다.' });
             return;
         }
+        
+        // 비밀번호 확인
+        const user = users[0];
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (validPassword) {
+            // 세션에 사용자 정보 저장
+            req.session.user = { id: user.id, username: user.username };
+            console.log("로그인 성공함: ", username);
 
-        const user = users[0]; // 첫 번째 사용자 정보 사용
-
-        // 비밀번호 검증 (bcrypt 사용 시)
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
-            res.status(400).send({ message: '비밀번호가 일치하지 않습니다.' });
-            return;
+            // 클라이언트에 성공 응답 전송
+            data = { user }
+            res.status(200).send(data);
+            console.log(data)
+        } else {
+            // 로그인 실패 처리
+            return res.status(401).send('비밀번호가 일치하지 않습니다. ');
         }
-        console.log("들어옴1")
-        console.log(user)
-        // 토큰 생성
-        // const token = tokenService.getToken(user.username); // 예: user.id 또는 user.username
-        // console.log(token)
-        data = {/*token,*/ user }
-        res.status(200).send(data);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
     }
+
 });
 
 

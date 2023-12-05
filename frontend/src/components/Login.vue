@@ -107,11 +107,11 @@ export default {
           // 서버로부터 응답을 받았지만 에러 상태 코드가 있는 경우
           const statusCode = error.response.status;
           if (statusCode === 401) {
-            this.errorToast("잘못된 사용자 이름이나 비밀번호입니다.");
+            this.errorToast("아이디나 비밀번호가 일치하지 않습니다.");
           } else if (statusCode === 500) {
             this.errorToast("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
           } else {
-            this.errorToast("알 수 없는 오류가 발생했습니다.");
+            this.errorToast("사용자의 아이디가 없습니다. 회원가입을 진행하시기 바랍니다");
           }
         } else if (error.request) {
           // 요청이 이루어졌으나 응답을 받지 못한 경우

@@ -87,8 +87,23 @@ export default {
 
       })
       .catch(error => {
-        console.error('회원가입 시도 오류', error);
-        this.errorToast(error.message);
+        if (error.response) {
+          // 서버로부터 응답을 받았지만 에러 상태 코드가 있는 경우
+          const statusCode = error.response.status;
+          if (statusCode === 400) {
+            this.errorToast("이미 사용 중인 아이디 입니다.");
+          } else if (statusCode === 401) {
+            this.errorToast("아이디나 비밀번호가 일치하지 않습니다");
+          } else {
+            this.errorToast("검증 비밀번호가 일치하지 않습니다");
+          }
+        } else if (error.request) {
+          // 요청이 이루어졌으나 응답을 받지 못한 경우
+          this.errorToast("서버로부터 응답이 없습니다. 인터넷 연결을 확인해주세요.");
+        } else {
+          // 요청을 설정하는 단계에서 문제가 발생한 경우
+          this.errorToast("요청 중 오류가 발생했습니다.");
+        }
       })
     }
   }

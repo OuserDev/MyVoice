@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 작성</title>
+</head>
+<body>
+  <h1>게시글 작성</h1>
+  
+  <% if (user) { %>
+    <p>글쓴이: <%= user.username %></p>
+    <form action="/write" method="post">
+      <label for="title">제목:</label>
+      <input id="title" name="title" type="text" required>
+
+      <label for="content">내용:</label>
+      <textarea id="content" name="content" required></textarea>
+
+      <label for="file_src">파일 경로:</label>
+      <input id="file_src" name="file_src" type="text" required>
+
+      <button type="submit">글쓰기</button>
+    </form>
+  <% } else { %>
+    <p>로그인이 필요합니다.</p>
+    <a href="/login">로그인 페이지로 이동</a>
+  <% } %>
+</body>
+</html>

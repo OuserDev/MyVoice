@@ -11,6 +11,4 @@ const db = mysql.createPool({
 
 module.exports = db
 
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_USER);
 // 다른 환경 변수들도 출력

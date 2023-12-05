@@ -17,11 +17,12 @@
   <XyzTransition appear xyz="fade up-50%">
   <div class="container-fluid text-white" v-if="this.selectCardStatus===1">
     <div class="container pb-5 row" style="width: 800px;">
+      <h1 class="fw-bold text-white"><p class="gradient-ttext">선택한 목소리 데이터셋</p></h1>
       <div class="customCard row px-0" :style="{ borderColor: selectCard.selectColor }">
         <card class="col-md-4" :카드정보="this.selectCard">
         </card>
         <div class="p-4 col-md fw-bold">
-          <div class="row text-black fw-bold">{{ selectCard.info }}</div>
+          <div class="row text-black">{{ selectCard.info }}</div>
           <hr class="featurette-divider my-3"> 
             <div class="row p-md-3 icon-demo-examples">
               <div class="customColor fs-5 text-black">
@@ -31,8 +32,8 @@
             </div>
             <div class="fs-6 text-black">
               
-              [MV Pick] 이런 곳에 활용을 추천 드려요!
-              <p class="mt-1 mb-0 fs-5 fw-bold" :style="{color : selectCard.selectColor }">#노래  #미디어  #엔터테인먼트</p>
+              [MyVoice Pick] 이런 곳에 활용을 추천 드려요!
+              <p class="mt-1 mb-0 fs-5 fw-bold" :style="{color : selectCard.selectColor }">{{ selectCard.tag }}</p>
             </div>
           </div>
       </div>
@@ -47,7 +48,7 @@ import { defineComponent } from 'vue';
 import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import card from "@/components/card.vue";
-import { mapState } from 'vuex';
+import { mapState,mapMutations } from 'vuex';
 
 export default defineComponent({
   name: 'Autoplay',
@@ -73,6 +74,7 @@ export default defineComponent({
     ...mapState(['보이스셋리스트']),
   },
   methods : {
+    ...mapMutations(['set선택한카드']),
     stopAutoplay() {
       if (this.autoplayInterval == 2000) {
         this.autoplayInterval = 0;
@@ -82,10 +84,20 @@ export default defineComponent({
         this.selectCardStatus = 0;
       }
     },
-    클릭카드정보(카드정보, color) {
+    클릭카드정보(카드정보) {
       this.selectCard = 카드정보;
+      this.set선택한카드(this.selectCard);
+      this.카드상세상태변경();
     },
-  }
+    카드상세상태변경() {
+      if (this.selectCardStatus === 0) {
+        this.selectCardStatus = 1;
+      } else {
+        this.selectCardStatus = 0;
+        this.set선택한카드("");
+      };
+    }
+  },
 })
 </script>
 
@@ -146,4 +158,9 @@ margin: 0 auto;
   fill: white;
   }
 
+.gradient-ttext {
+    background: linear-gradient(to right, #ffffff, #1d73e4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
 </style>

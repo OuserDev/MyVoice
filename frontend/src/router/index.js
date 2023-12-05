@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StepView from '../views/StepView.vue'
 import Community from '../views/Community.vue'
+import board_detail from '../components/board_detail.vue'
 
 const routes = [
   {
@@ -17,7 +18,7 @@ const routes = [
   {
     path: '/community',
     name: 'community',
-    component: Community
+    component: Community,
   },
 ]
 

@@ -15,7 +15,7 @@
       </div>
       <!-- MyVoice 텍스트 -->
       <div v-if="message == 2" class="square">
-        <p class="gradient-text" style="font-size: 2.5em">MyVoice</p>
+        <p class="gradient-teext" style="font-size: 2.5em">MyVoice</p>
       </div>
     </XyzTransition>
     <!-- logow.png 이미지에 대한 XyzTransition -->
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style>
-.gradient-text {
+.gradient-teext {
   background: linear-gradient(to right, #ffffff, #2c7ba6);
   -webkit-background-clip: text;
   color: transparent;

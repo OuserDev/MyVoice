@@ -1,22 +1,23 @@
 <template>
-  <main class="d-flex flex-nowrap">
+  <main class="d-flex">
   <div class="b-example-divider b-example-vr"></div>
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary z-1" style="width: 280px;">
+  <div class="pt-5 px-5 d-flex flex-column flex-shrink-0 bg-body-tertiary z-1" style="width: 400px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4">Sidebar</span>
+      <div class="pt-5">
+        <div class="fs-4 text-start">어서오세요,</div>
+        <div class="fs-3 text-start fw-bold">{{ userInfo.username }}<span class="fs-5 fw-normal">님!</span></div>
+      </div>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Home
+        <a href="#" class="nav-link active fw-bold" aria-current="page">
+          글 작성하기
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="#" class="nav-link link-body-emphasis">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#writer"/></svg>
           Dashboard
         </a>
       </li>
@@ -37,22 +38,9 @@
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           Customers
         </a>
-      </li>
+      </li> -->
     </ul>
     <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>mdo</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
   </div>
   <div class="b-example-divider b-example-vr"></div>
 </main>
@@ -61,6 +49,7 @@
 <script>
 import { onMounted } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { mapState } from "vuex";
 
 export default {
   name: 'YourComponentName',
@@ -71,6 +60,9 @@ export default {
         new bootstrap.Tooltip(tooltipTriggerEl);
       });
     });
+  },
+  computed : {
+    ...mapState(['userInfo'])
   }
 };
 </script>
@@ -105,7 +97,7 @@ export default {
   .b-example-vr {
   flex-shrink: 0;
   width: 1.5rem;
-  height: 100vh;
+  height: 90vh;
   }
 
   .bi {

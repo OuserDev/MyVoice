@@ -11,17 +11,24 @@
       ></button>
       <div class="form">
         <h3 style="color: black; margin-bottom: 30px">로그인</h3>
-        <form class="login-form" @submit.prevent="로그인">
-          <input type="text" placeholder="Username" v-model="username" />
-          <input type="password" placeholder="Password" v-model="password" />
-          <button type="submit">login</button>
-          <p class="message fw-normal" style="margin-top: 30px">
-            처음 방문하셨나요?
-            <button class="btnCustom" @click.prevent="회원가입창열기()">
-              회원가입
-            </button>
-          </p>
-        </form>
+        <div v-if= "isUserInfoFilled(userInfo) === false">
+            <form class="login-form" @submit.prevent="로그인">
+              <input type="text" placeholder="Username" v-model="username" />
+              <input type="password" placeholder="Password" v-model="password" />
+              <button @submit.prevent="로그인">login</button>
+              <p class="message fw-normal" style="margin-top: 30px">
+                처음 방문하셨나요?
+                <button class="btnCustom" @click.prevent="회원가입창열기()">
+                  회원가입
+                </button>
+              </p>
+            </form>
+          </div>
+          <div v-else-if= "isUserInfoFilled(userInfo) === true">
+            <span class="text-black h3">환영합니다, <span class="fw-bold">{{ userInfo.username }}</span>님!</span>
+            <br>
+            <button type="submit" @click="로그아웃()">logout</button>
+          </div>
       </div>
     </div>
   </div>
@@ -31,15 +38,16 @@
 <script>
 import { mapMutations, mapActions } from "vuex";
 import { createToast } from "mosha-vue-toastify";
+import { mapState } from "vuex";
 
 export default {
   name: "Login",
   setup() {
-    const errorToast = () => {
+    const errorToast = (errorMessage) => {
       createToast(
         {
-          title: "로그인 오류!",
-          description: "아이디 또는 비밀번호가 일치하지 않습니다.",
+          title: "로그인 실패!",
+          description: errorMessage,
         },
         {
           type: "danger",
@@ -52,11 +60,11 @@ export default {
         }
       );
     };
-    const successToast = () => {
+    const successToast = (username) => {
       createToast(
         {
           title: "로그인 성공!",
-          description: "환영합니다, 님.",
+          description: "환영합니다, "+username+"님.",
         },
         {
           position: "top-right",
@@ -71,33 +79,57 @@ export default {
     };
     return { errorToast, successToast };
   },
-  data() {
-    return {
-      username: "",
-      password: "",
-    };
-  },
   components: {},
+  computed : {
+    ...mapState(["userInfo"]),
+  },
   methods: {
-    ...mapMutations(["로그인창열기", "회원가입창열기"]),
-    ...mapActions(["로그인전송"]),
+    ...mapMutations(["로그인창열기", "회원가입창열기", "로그인창닫기"]),
+    ...mapActions(["로그인전송", "로그아웃"]),
 
     로그인() {
+
       const credentials = {
         username: this.username,
         password: this.password,
       };
+
       this.로그인전송(credentials)
-        .then(() => {
-          console.log("로그인 성공");
-          this.successToast();
-          // 여기서의 처리는 스토어의 뮤테이션 커밋 이후에 일어남 (찐 성공, 리디렉션이나 UI처리 등등..)
+
+        .then((userInfo) => {
+          console.log("로그인 성공 ",userInfo);
+          this.successToast(userInfo.username);
+          this.로그인창닫기();
         })
+
         .catch((error) => {
-          console.error("로그인 시도 오류", error);
-          this.errorToast();
+          if (error.response) {
+          // 서버로부터 응답을 받았지만 에러 상태 코드가 있는 경우
+          const statusCode = error.response.status;
+          if (statusCode === 401) {
+            this.errorToast("잘못된 사용자 이름이나 비밀번호입니다.");
+          } else if (statusCode === 500) {
+            this.errorToast("서버 오류가 발생했습니다. 나중에 다시 시도해주세요.");
+          } else {
+            this.errorToast("사용자의 아이디가 없습니다.");
+          }
+        } else if (error.request) {
+          // 요청이 이루어졌으나 응답을 받지 못한 경우
+          this.errorToast("서버로부터 응답이 없습니다. 인터넷 연결을 확인해주세요.");
+        } else {
+          // 요청을 설정하는 단계에서 문제가 발생한 경우
+          this.errorToast("요청 중 오류가 발생했습니다.");
+        }
         });
     },
+    isUserInfoFilled(obj) {
+      // 객체가 비어 있는지 확인한다. 비어 있으면 false 반환
+      if (Object.keys(obj).length === 0) {
+        return false;
+      }
+      // 객체의 모든 키에 대해 값이 truthy인지 확인한다.
+      return Object.keys(obj).every(key => obj[key]);
+    }
   },
 };
 </script>

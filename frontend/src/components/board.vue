@@ -1,80 +1,98 @@
 <template>
-<div>
-<section class="notice content mt-5">
-  <div class="page-title">
+  <div class="border-3 shadow rounded px-5 pd-5">
+    <section class="notice">
+      <div class="page-title">
         <div class="container">
-            <h3>공지사항</h3>
+          <h1 class="fw-bold">Community</h1>
         </div>
-    </div>
+      </div>
 
-    <!-- board seach area -->
-    <div id="board-search">
+      <!-- board seach area -->
+      <!-- <div id="board-search">
         <div class="container">
-            <div class="search-window">
-                <form action="">
-                    <div class="search-wrap">
-                        <label for="search" class="blind">공지사항 내용 검색</label>
-                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                        <button type="submit" class="btn btn-dark">검색</button>
-                    </div>
-                </form>
-            </div>
+          <div class="search-window">
+            <form action="">
+              <div class="search-wrap">
+                <label for="search" class="blind">공지사항 내용 검색</label>
+                <input
+                  id="search"
+                  type="search"
+                  name=""
+                  placeholder="검색어를 입력해주세요."
+                  value=""
+                />
+                <button type="submit" class="btn btn-dark">검색</button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
-   
-  <!-- board list area -->
-    <div id="board-list">
+      </div> -->
+
+      <!-- board list area -->
+      <div id="board-list">
         <div class="container">
-            <table class="board-table">
-                <thead>
-                <tr>
-                    <th scope="col" class="th-num">번호</th>
-                    <th scope="col" class="th-title">제목</th>
-                    <th scope="col" class="th-date">등록일</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>3</td>
-                    <th>
-                      <a href="#!">[공지사항] 개인정보 처리방침 변경안내처리방침</a>
-                      <p>테스트</p>
-                    </th>
-                    <td>2017.07.13</td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <th><a href="#!">공지사항 안내입니다. 이용해주셔서 감사합니다</a></th>
-                    <td>2017.06.15</td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <th><a href="#!">공지사항 안내입니다. 이용해주셔서 감사합니다</a></th>
-                    <td>2017.06.15</td>
-                </tr>
-                </tbody>
-            </table>
+          <table class="board-table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-num">글번호</th>
+                <th scope="col" class="th-title">제목</th>
+                <th scope="col" class="th-date">등록일</th>
+                <th scope="col" class="th-date">작성자</th>
+                <th scope="col" class="th-num">조회수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="post in boardList" :key="post.id">
+                <td>{{ post.id }}</td>
+                <td class="fw-bold" @click="setViewStatus(post)">{{ post.title }}</td>
+                <td>{{ post.createdAt }}</td>
+                <td>{{ post.writer }}</td>
+                <td>{{ post.viewCount }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <nav
+            aria-label="Page navigation example"
+            class="d-flex align-items-center justify-content-center mt-5"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-    </div>
-
-</section>
-</div>
-
+      </div>
+    </section>
+  </div>
 </template>
 
-
-
 <script>
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
-  components: {
+  components: {},
+  computed: {
+    ...mapState(["boardList", "viewStatus"]),
   },
+  methods: {
+    ...mapActions(["get게시물목록"]),
+    ...mapMutations(["setViewStatus"]),
+  },
+  created() {
+    this.get게시물목록();
+  }
 };
 </script>
-
-
 
 <style>
 table {
@@ -101,7 +119,7 @@ section.notice {
 }
 #board-search .search-window .search-wrap {
   position: relative;
-/*   padding-right: 124px; */
+  /*   padding-right: 124px; */
   margin: 0 auto;
   width: 80%;
   max-width: 564px;
@@ -155,10 +173,11 @@ section.notice {
 }
 
 .board-table .th-date {
-  width: 200px;
+  width: 150px;
 }
 
-.board-table th, .board-table td {
+.board-table th,
+.board-table td {
   padding: 14px 0;
 }
 
@@ -174,7 +193,7 @@ section.notice {
   text-align: left;
 }
 
-.board-table tbody th p{
+.board-table tbody th p {
   display: none;
 }
 
@@ -211,7 +230,8 @@ section.notice {
   color: #fff;
 }
 
-.btn-dark:hover, .btn-dark:focus {
+.btn-dark:hover,
+.btn-dark:focus {
   background: #373737;
   border-color: #373737;
   color: #fff;
@@ -222,7 +242,8 @@ section.notice {
   color: #fff;
 }
 
-.btn-dark:hover, .btn-dark:focus {
+.btn-dark:hover,
+.btn-dark:focus {
   background: #373737;
   border-color: #373737;
   color: #fff;
@@ -238,7 +259,7 @@ section.notice {
   box-sizing: border-box;
 }
 .clearfix:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -254,5 +275,4 @@ section.notice {
   width: 1px;
   height: 1px;
 }
-
 </style>

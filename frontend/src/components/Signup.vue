@@ -17,7 +17,6 @@
   </div>
 </template>
 
-
 <script>
 import { mapMutations,mapActions } from 'vuex'
 import { createToast } from "mosha-vue-toastify";
@@ -25,11 +24,11 @@ import { createToast } from "mosha-vue-toastify";
 export default {
   name: "Signup",
   setup() {
-    const errorToast = () => {
+    const errorToast = (errorMessage) => {
       createToast(
         {
-          title: "회원가입 오류!",
-          description: "",
+          title: "회원가입 실패 !",
+          description: errorMessage,
         },
         {
           type: "danger",
@@ -45,8 +44,8 @@ export default {
     const successToast = () => {
       createToast(
         {
-          title: "회원가입 성공!",
-          description: "환영합니다 :D",
+          title: "회원가입 성공 !",
+          description: "환영합니다 :D 로그인을 진행해주세요 !",
         },
         {
           position: "top-right",
@@ -74,20 +73,37 @@ export default {
     ...mapMutations(['회원가입창열기', '로그인창열기']),
     ...mapActions(['회원가입전송']),
     회원가입() {
-      const signUpData = { 
+      const userData = { 
         username: this.username,
         password: this.password,
         passwordReconfirm: this.passwordReconfirm,
         email: this.email
       };
-      this.회원가입전송(signUpData)
+      this.회원가입전송(userData)
+      
       .then(() => {
         console.log('회원가입 성공');
         this.successToast();
+
       })
       .catch(error => {
-        console.error('회원가입 시도 오류', error);
-        this.errorToast();
+        if (error.response) {
+          // 서버로부터 응답을 받았지만 에러 상태 코드가 있는 경우
+          const statusCode = error.response.status;
+          if (statusCode === 409) {
+            this.errorToast("이미 사용 중인 아이디입니다.");
+          } else if (statusCode === 401) {
+            this.errorToast("로그인에 실패하였습니다 (오류코드 : 세션 미생성) ");
+          } else {
+            this.errorToast("사용자의 아이디가 없습니다.");
+          }
+        } else if (error.request) {
+          // 요청이 이루어졌으나 응답을 받지 못한 경우
+          this.errorToast("서버로부터 응답이 없습니다. 인터넷 연결을 확인해주세요.");
+        } else {
+          // 요청을 설정하는 단계에서 문제가 발생한 경우
+          this.errorToast("요청 중 오류가 발생했습니다.");
+        }
       })
     }
   }

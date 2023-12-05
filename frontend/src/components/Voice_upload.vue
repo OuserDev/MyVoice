@@ -2,27 +2,44 @@
   <div class="content mb-5">
     <XyzTransition xyz="fade up-50% duration-15" :appear-visible="true">
       <div class="text-dark" v-if="true">
-        <div class="mb-5">
-          <h2 class="fw-bold">방금 선택해주신 목소리로 음원을 변환해볼까요 ?<br></h2>
-
-          <h3>
-            노래, 녹음, 강의 등등 사람의 목소리가 담겨진 목소리 파일을 올려주세요 !
-          </h3>
+        <div class="mb-3">
+          <h2 class="fw-bold">
+            방금 선택해주신
+            <span :style="`color: ${선택한카드.selectColor}`">{{
+              선택한카드.voice_name
+            }}</span>
+            아티스트 목소리로 음성을 변환해볼까요 ?<br />
+          </h2>
+          <h3>사람의 목소리가 담겨진 음성 오디오 파일을 올려주세요 !</h3>
+          <div class="mt-5 mx-5 row ">
+            <div class="col-4 pr-0">
+              <img src="@/assets/logo/공사.png" style="height: 140px;" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-8 text-start pt-3 pl-0" style="color: #B34B4B;">
+              <p><h6>현재 MyVoice에서는 오직 <span class="fw-bold">순수한 음성 파일 변환</span>만을 지원합니다.</h6></p>
+              <p><h6><span class="fw-bold h5">노래 제작</span>의 경우, 음원에서 배경음악(MR) 을 <span class="fw-bold">사전 제거</span> 후 업로드 해주시면 감사하겠습니다.</h6></p>
+              <p><h6>이용에 불편을 드려 죄송합니다. 추후 좀 더 개선된 서비스로 찾아뵙겠습니다 :)</h6></p>
+            </div>
+          </div>
         </div>
         <div class="mb-5">
           <FileUpload
             name="demo[]"
-            url="./upload.php"
             @upload="onAdvancedUpload($event)"
-            :multiple="true"
-            accept="image/*"
+            @select="choose"
+            @remove="삭제"
+            accept="audio/*"
+            :multiple="false"
             :maxFileSize="100000000"
+            :fileLimit="1"
+            :auto="true"
             :pt="{
               content: { class: 'surface-ground' },
             }"
           >
             <template #empty>
-              <p>Drag and drop files to here to upload.</p>
+              <p>[Support Drag & Drop]</p>
+              <p class="fw-bold">이곳에 PC 파일을 끌어와 놓아보세요!</p>
             </template>
           </FileUpload>
         </div>
@@ -33,15 +50,83 @@
 
 <script>
 import FileUpload from "primevue/fileupload";
+import { mapState,mapMutations } from "vuex";
+import { createToast } from "mosha-vue-toastify";
 
 export default {
+  data() {
+    return {
+      파일업로드상태: false,
+    }
+  },
+  setup() {
+    const errorToast = (filename) => {
+      createToast(
+        {
+          title: filename + "파일 업로드 실패!",
+          description: "이미 한 개의 음성 파일을 업로드 하였습니다.",
+        },
+        {
+          type: "danger",
+          position: "top-center",
+          transition: "slide",
+          timeout: 3000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    const successToast = (fileName) => {
+        createToast(
+        {
+          title: fileName + " 파일 업로드 완료!",
+          description: "다음 STEP으로 이동해볼까요? (두근두근)",
+        },
+        {
+          position: "top-center",
+          type: "success",
+          transition: "bounce",
+          timeout: 6000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    return { errorToast, successToast };
+  },
+  methods : {
+    ...mapMutations(['set업로드한음원']),
+    삭제(event) {
+      this.파일업로드상태 = false; // 업로드 상태를 false로 설정합니다.
+    },
+    choose(event) {
+      const fileName = event.files[0].name;
+      if (this.파일업로드상태 === true) {
+        this.errorToast(fileName);
+        return false;
+      } else {
+        this.파일업로드상태 = true;
+        this.successToast(fileName);
+        this.set업로드한음원(fileName);
+      }
+    },
+  },
   components: {
     FileUpload,
+  },
+  computed: {
+    ...mapState(["선택한카드", "업로드한음원"]),
   },
 };
 </script>
 
 <style>
+.p-fileupload-file-thumbnail {
+  display: none;
+}
+
 .p-fileupload {
   background-color: #ffffff; /* 배경색을 흰색으로 변경 */
   border: 1px solid #dddddd; /* 테두리 색상을 연한 회색으로 변경 */
@@ -57,11 +142,10 @@ export default {
   color: #4b5563; /* text-gray-700 */
   padding: 20px; /* p-5 */
   border: 1px solid #e5e7eb; /* border-gray-300 */
-  border-radius: 0.5rem 0.5rem 0 0 ; /* rounded-tr-lg rounded-tl-lg */
+  border-radius: 0.5rem 0.5rem 0 0; /* rounded-tr-lg rounded-tl-lg */
   gap: 8px; /* gap-2 */
   border-bottom: none; /* border-b-0 */
 }
-
 
 .p-fileupload-content {
   position: relative;
@@ -69,7 +153,7 @@ export default {
   color: #4b5563; /* text-gray-700 */
   padding: 32px; /* p-8 */
   border: 1px solid #e5e7eb; /* border-gray-300 */
-  border-radius: 0 0 0.75rem 0.75rem ; /* rounded-b-lg */
+  border-radius: 0 0 0.75rem 0.75rem; /* rounded-b-lg */
 }
 
 .p-fileupload-file {
@@ -179,5 +263,11 @@ button.p-button {
   text-align: center; /* 텍스트 중앙 정렬 유지 */
   color: #999999; /* 글씨 색상 설정 유지 */
   padding: 16px; /* 비어있는 슬롯 안쪽 여백 설정 */
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #ffffff, #3a79cb);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 </style>

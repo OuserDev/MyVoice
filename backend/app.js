@@ -11,18 +11,18 @@ const app = express();
 require("dotenv").config();
 
 app.use(session({
-    secret: 'your_secret_key', // 세션 암호화를 위한 비밀 키
-    resave: false, // 세션을 항상 저장할지 결정 (일반적으로 false 권장)
-    saveUninitialized: true, // 초기화되지 않은 세션을 저장할지 결정
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 쿠키 유효 기간 (예: 1일)
-    }
-}));
+    secret: 'gunpyo',	// 원하는 문자 입력
+    resave: false,
+    saveUninitialized: true,
+  }))
+
 
 app.use(cors({
-    origin: 'http://localhost:8080' // Vue 앱의 출처
-  }));
-app.use(express.json());
+    origin: "*",
+    credentials: true,
+  }));;
+
+app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
 
 const mainRouter    = require('./routes/main_route');

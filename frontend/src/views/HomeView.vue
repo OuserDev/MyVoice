@@ -189,7 +189,7 @@ button.my-custom-button:hover{
   font-size: 20px;
 }
 
-.gradient-text {
+.gradient-teext {
     background: linear-gradient(to right, #ffffff, #3a79cb);
     -webkit-background-clip: text;
     color: transparent;

@@ -18,7 +18,7 @@
             <div class="col-8 text-start pt-3 pl-0" style="color: #B34B4B;">
               <p><h6>현재 MyVoice에서는 오직 <span class="fw-bold">순수한 음성 파일 변환</span>만을 지원합니다.</h6></p>
               <p><h6><span class="fw-bold h5">노래 제작</span>의 경우, 음원에서 배경음악(MR) 을 <span class="fw-bold">사전 제거</span> 후 업로드 해주시면 감사하겠습니다.</h6></p>
-              <p><h6>해당 부분에 관하여, 추후 좀 더 나은 서비스로 찾아뵙겠습니다 :)</h6></p>
+              <p><h6>이용에 불편을 드려 죄송합니다. 추후 좀 더 개선된 서비스로 찾아뵙겠습니다 :)</h6></p>
             </div>
           </div>
         </div>

@@ -1,8 +1,9 @@
 <template>
   <div class="content mb-5">
-    <XyzTransition xyz="fade up-50% duration-10" :appear-visible="true">
-      <div class="text-dark mb-5 pb-5" v-if="true">
 
+    <XyzTransition appear mode="out-in" :appear-visible="true">
+
+      <div xyz="fade up-50% duration-10" class="text-dark mb-5 pb-5" v-if="result == 0">
         <h2 class="fw-bold">
           <span class="gradient-text">{{ 업로드한음원 }}</span>를
           <span :style="`color: ${선택한카드.selectColor}`">{{선택한카드.voice_name}} 버전</span>으로 AI 변환해볼게요 ! </h2>
@@ -16,7 +17,13 @@
             <span class="h5" v-if="cycle == 3">본 서비스 사용으로 인해 발생하는 모든 법적 책임은 사용자에게 있습니다.</span>
           </div>
       </div>
+
+      <div xyz="fade up-100% duration-5" class="text-dark mb-5 pb-5" v-if="result == 1">
+        <h1 class="fw-bold mb-5">결과가 나왔습니다!</h1>
+      </div>
+
     </XyzTransition>
+
   </div>
 </template>
 
@@ -46,7 +53,12 @@ export default {
       } else {
         this.cycle++;
       }
-    }, 4000); // 3초(3000밀리초)마다 호출
+    }, 4000);
+    setTimeout(() => {
+      if (this.result === 0) {
+        this.result = 1;
+      }
+    }, 15000); // 3초(3000밀리초)마다 호출 // 3초(3000밀리초)마다 호출
   },
 };
 </script>

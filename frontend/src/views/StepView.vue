@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5">
+  <div class="container pt-5" style="margin-bottom:320px;" >
     <form-wizard @on-complete="onComplete" ref="wizard" color="#3a98cb">
       <tab-content title="STEP 1. 목소리 데이터셋 선택" icon="fa fa-microphone">
         <Dataset_select v-if="convert_status == 1" />

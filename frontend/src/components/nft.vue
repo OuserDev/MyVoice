@@ -17,7 +17,7 @@
   <XyzTransition appear xyz="fade up-50%">
   <div class="container-fluid text-white" v-if="this.selectCardStatus===1">
     <div class="container pb-5 row" style="width: 800px;">
-      <h1 class="fw-bold text-white"><p class="gradient-text">선택한 목소리 데이터셋</p></h1>
+      <h1 class="fw-bold text-white"><p class="gradient-ttext">선택한 목소리 데이터셋</p></h1>
       <div class="customCard row px-0" :style="{ borderColor: selectCard.selectColor }">
         <card class="col-md-4" :카드정보="this.selectCard">
         </card>
@@ -158,4 +158,9 @@ margin: 0 auto;
   fill: white;
   }
 
+.gradient-ttext {
+    background: linear-gradient(to right, #ffffff, #1d73e4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
 </style>

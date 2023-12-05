@@ -1,8 +1,8 @@
-GET http://localhost:3000/board/update/6
+GET http://localhost:3000/board/update/5
 
 ###
 
-PUT http://localhost:3000/board/update/6
+PUT http://localhost:3000/board/update/5
 Content-Type: application/json; charset=UTF-8
 
 {

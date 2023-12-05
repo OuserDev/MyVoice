@@ -28,7 +28,7 @@ export default {
         this.cardStyle.border = `4px solid ${this.카드정보.selectColor}`; // 테두리에 색상 적용
         this.boxShadowStyle = `0 0px 13px 20px rgba(${parseInt(this.카드정보.selectColor.slice(1, 3), 16)}, ${parseInt(this.카드정보.selectColor.slice(3, 5), 16)}, ${parseInt(this.카드정보.selectColor.slice(5, 7), 16)}, 0.3)`;
     },getImagePath(name) {
-        return require(`@/assets/datasets/${name}.png`);
+        return require(`@/assets/datasets/${name}.jpg`);
     },
     클릭카드선택() {
         this.$emit('클릭카드선택', this.카드정보, this.카드정보.selectColor);

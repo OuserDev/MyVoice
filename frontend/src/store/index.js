@@ -12,6 +12,9 @@ export default createStore({
       boardList: [],
       보이스셋리스트: [],
       선택한카드: "",
+      viewStatus: 0,
+      선택한게시물: {},
+      업로드한음원: "",
 		}
 	},
   getters: {
@@ -70,6 +73,20 @@ export default createStore({
     set선택한카드(state, selectCard) { 
       state.선택한카드 = selectCard;
       console.log("선택:", state.선택한카드);
+    },
+    setViewStatus(state, post) {
+      if (state.viewStatus == 0) {
+        state.viewStatus = 1;
+        state.선택한게시물 = post;
+        console.log(post);
+      } else {
+        state.viewStatus = 0;
+        state.선택한게시물 = undefined;
+      }
+    },
+    set업로드한음원(state, 업로드한음원) { 
+      state.업로드한음원 = 업로드한음원;
+      console.log(state.업로드한음원);
     },
 },
   actions: {
@@ -130,7 +147,22 @@ export default createStore({
         throw error;
       });
     },
-  },
+
+    파일다운로드(context) {
+      axios.get('http://localhost:3000/files/모놀로그.mp3', {
+        responseType: "blob"
+    }).then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', attachFileName); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+    }).catch(exception => {
+        alert("파일 다운로드 실패");
+    });
+  }
+},
   
   modules: {
   }

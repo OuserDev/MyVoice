@@ -19,8 +19,6 @@ import PrimeVue from 'primevue/config';
 import moshaToast from 'mosha-vue-toastify'
 import 'mosha-vue-toastify/dist/style.css'
 
-
-
 store.dispatch('get보이스셋리스트');
 
 createApp(App).use(store).use(router).use(moshaToast).use(VueAnimXyz).use(Vue3FormWizard).use(PrimeVue).mount('#app');

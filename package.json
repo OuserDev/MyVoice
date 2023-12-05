@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "js-file-download": "^0.4.12",
+    "vue-spinner": "^1.0.4"
   }
 }

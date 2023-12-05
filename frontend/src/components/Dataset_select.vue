@@ -4,6 +4,7 @@
       <div class="text-dark" v-if="true">
         <h1 class="fw-bold">환영합니다 !</h1>
         <h2 class="mb-5">일단 원하는 목소리를 선택해볼까요 ?</h2>
+        <h5 class="mb-5 fw-bold" style="color: #df3030">※ 이전 단계로 돌아가시거나 처음부터 다시 하시려면 새로고침 해야해요!</h5>
         <div>
           <div class="b-example-divider"></div>
           <div style="background-color: rgb(41, 39, 39)">

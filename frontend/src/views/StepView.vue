@@ -12,7 +12,7 @@
       <tab-content title="STEP 3. 결과 다운로드!" icon="fa fa-music">
         <Result_download v-if="convert_status === 3" />
       </tab-content>
-      <button class="btn-lg" @click="goToNextTab" v-if="convert_status == 1 || convert_status == 2">NEXT STEP</button>
+      <button class="btn-lg my-custom-button" @click="goToNextTab" v-if="convert_status == 1 || convert_status == 2">Next Step !</button>
     </form-wizard>
   </div>
 </template>
@@ -63,6 +63,10 @@ export default {
       alert("Yay. Done!");
     },
     goToNextTab() {
+      if (Object.keys(this.userInfo).length === 0) {
+        this.errorToast("본 서비스는 로그인 시 이용 가능합니다.");
+        return;
+      }
       if (this.convert_status === 1) {
         if (Object.keys(this.선택한카드).length === 0) {
           console.log("막힘");
@@ -87,7 +91,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["convert_status", "선택한카드", "업로드한음원"]),
+    ...mapState(["convert_status", "선택한카드", "업로드한음원", "userInfo"]),
   },
 };
 </script>

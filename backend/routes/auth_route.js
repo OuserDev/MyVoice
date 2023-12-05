@@ -91,10 +91,6 @@ router.post('/login', async (req, res) => {
         // console.log(token)
         data = {/*token,*/ user }
         res.status(200).send(data);
-
-
-
-
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

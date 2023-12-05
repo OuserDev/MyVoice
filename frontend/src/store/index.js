@@ -14,6 +14,7 @@ export default createStore({
       선택한카드: "",
       viewStatus: 0,
       선택한게시물: {},
+      업로드한음원: "",
 		}
 	},
   getters: {
@@ -82,7 +83,11 @@ export default createStore({
         state.viewStatus = 0;
         state.선택한게시물 = undefined;
       }
-    }
+    },
+    set업로드한음원(state, 업로드한음원) { 
+      state.업로드한음원 = 업로드한음원;
+      console.log(state.업로드한음원);
+    },
 },
   actions: {
     get보이스셋리스트(context) {

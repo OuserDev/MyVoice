@@ -32,8 +32,8 @@
             </div>
             <div class="fs-6 text-black">
               
-              [MV Pick] 이런 곳에 활용을 추천 드려요!
-              <p class="mt-1 mb-0 fs-5 fw-bold" :style="{color : selectCard.selectColor }">#노래  #미디어  #엔터테인먼트</p>
+              [MyVoice Pick] 이런 곳에 활용을 추천 드려요!
+              <p class="mt-1 mb-0 fs-5 fw-bold" :style="{color : selectCard.selectColor }">{{ selectCard.tag }}</p>
             </div>
           </div>
       </div>

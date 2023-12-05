@@ -2,7 +2,7 @@
   <div class="content mb-5">
     <XyzTransition xyz="fade up-50% duration-15" :appear-visible="true">
       <div class="text-dark" v-if="true">
-        <div class="mb-5">
+        <div class="mb-3">
           <h2 class="fw-bold">
             방금 선택해주신
             <span :style="`color: ${선택한카드.selectColor}`">{{
@@ -11,24 +11,28 @@
             아티스트 목소리로 음성을 변환해볼까요 ?<br />
           </h2>
           <h3>사람의 목소리가 담겨진 음성 오디오 파일을 올려주세요 !</h3>
-          <div class="mt-5">
-            <p>MyVoice에서는 현재 오직 순수한 음성 파일만을 지원합니다.</p>
-            <p>노래를 부르게 하고 싶다면, 음원에서 배경음악을 제거후 업로드 바랍니다.</p>
-            <p>추후 해당 부분에 관하여, 좀 더 나은 서비스로 찾아뵙겠습니다 :)</p>
+          <div class="mt-5 mx-5 row ">
+            <div class="col-4 pr-0">
+              <img src="@/assets/logo/공사.png" style="height: 140px;" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-8 text-start pt-3 pl-0" style="color: #B34B4B;">
+              <p><h6>현재 MyVoice에서는 오직 <span class="fw-bold">순수한 음성 파일 변환</span>만을 지원합니다.</h6></p>
+              <p><h6><span class="fw-bold h5">노래 제작</span>의 경우, 음원에서 배경음악(MR) 을 <span class="fw-bold">사전 제거</span> 후 업로드 해주시면 감사하겠습니다.</h6></p>
+              <p><h6>해당 부분에 관하여, 추후 좀 더 나은 서비스로 찾아뵙겠습니다 :)</h6></p>
+            </div>
           </div>
         </div>
         <div class="mb-5">
           <FileUpload
             name="demo[]"
-            url="./upload.php"
-            @before-upload="onAdvancedUpload($event)"
+            @upload="onAdvancedUpload($event)"
             @select="choose"
             @remove="삭제"
             accept="audio/*"
             :multiple="false"
             :maxFileSize="100000000"
-            auto="true"
             :fileLimit="1"
+            :auto="true"
             :pt="{
               content: { class: 'surface-ground' },
             }"
@@ -46,7 +50,7 @@
 
 <script>
 import FileUpload from "primevue/fileupload";
-import { mapState } from "vuex";
+import { mapState,mapMutations } from "vuex";
 import { createToast } from "mosha-vue-toastify";
 
 export default {
@@ -93,6 +97,7 @@ export default {
     return { errorToast, successToast };
   },
   methods : {
+    ...mapMutations(['set업로드한음원']),
     삭제(event) {
       this.파일업로드상태 = false; // 업로드 상태를 false로 설정합니다.
     },
@@ -104,6 +109,7 @@ export default {
       } else {
         this.파일업로드상태 = true;
         this.successToast(fileName);
+        this.set업로드한음원(fileName);
       }
     },
   },
@@ -111,7 +117,7 @@ export default {
     FileUpload,
   },
   computed: {
-    ...mapState(["선택한카드"]),
+    ...mapState(["선택한카드", "업로드한음원"]),
   },
 };
 </script>
@@ -257,5 +263,11 @@ button.p-button {
   text-align: center; /* 텍스트 중앙 정렬 유지 */
   color: #999999; /* 글씨 색상 설정 유지 */
   padding: 16px; /* 비어있는 슬롯 안쪽 여백 설정 */
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #ffffff, #3a79cb);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 </style>

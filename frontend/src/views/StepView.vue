@@ -12,7 +12,7 @@
       <tab-content title="STEP 3. 결과 다운로드!" icon="fa fa-music">
         <Result_download v-if="convert_status === 3" />
       </tab-content>
-      <button class="btn-lg" @click="goToNextTab">NEXT STEP</button>
+      <button class="btn-lg" @click="goToNextTab" v-if="convert_status == 1 || convert_status == 2">NEXT STEP</button>
     </form-wizard>
   </div>
 </template>
@@ -73,11 +73,21 @@ export default {
           this.upCountConvertStatus();
           console.log("작동");
         }
+      } else if (this.convert_status === 2) {
+        if (Object.keys(this.업로드한음원).length === 0) {
+          console.log("막힘");
+          this.errorToast("변환을 원하는 음성 파일을 업로드해야 합니다.");
+          return;
+        } else {
+          this.$refs.wizard.nextTab();
+          this.upCountConvertStatus();
+          console.log("작동");
+        }
       }
     },
   },
   computed: {
-    ...mapState(["convert_status", "선택한카드"]),
+    ...mapState(["convert_status", "선택한카드", "업로드한음원"]),
   },
 };
 </script>

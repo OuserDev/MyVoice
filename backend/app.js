@@ -35,7 +35,7 @@ app.use('/', mainRouter);   // localhost:3000/
 app.use('/auth', authRouter);   // localhost:3000/auth
 app.use('/dataset', datasetRouter);   // localhost:3000/dataset
 app.use('/board', boardRouter);   // localhost:3000/board
-
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // 포트넘버 설정
 app.listen(3000, ()=>{

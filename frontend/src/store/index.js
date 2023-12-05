@@ -149,7 +149,7 @@ export default createStore({
     },
 
     파일다운로드(context) {
-      axios.get('http://localhost:3000/public/voice/모놀로그.mp3', {
+      axios.get(`${process.env.VUE_APP_BACKEND_URL}/public/voice/윤석열_모놀로그.wav`, {
         responseType: 'blob'
       }).then(response => {
         const file = new Blob(

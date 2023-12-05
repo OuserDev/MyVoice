@@ -83,10 +83,9 @@ router.post('/login', async (req, res) => {
             // 세션에 사용자 정보 저장
             req.session.user = { id: user.id, username: user.username };
             console.log("로그인 성공함: ", username);
-            const isLoggedIn = true;
 
             // 클라이언트에 성공 응답 전송
-            data = { user, isLoggedIn }
+            data = { user }
             res.status(200).send(data);
         } else {
             // 로그인 실패 처리

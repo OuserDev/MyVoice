@@ -1,13 +1,7 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "dotenv": "^16.3.1",
-    "js-file-download": "^0.4.12",
+    "doenv": "^16.3.1",
+    "js-file-downloadt": "^0.4.12",
     "vue-spinner": "^1.0.4"
-=======
-    "cookie-parser": "^1.4.6",
-    "dotenv": "^16.3.1",
-    "jsonwebtoken": "^9.0.2"
->>>>>>> backend
   }
 }

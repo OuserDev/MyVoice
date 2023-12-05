@@ -20,7 +20,7 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <button href="#" class="btn-lg my-custom-button" aria-current="page">
+          <button @click="set글작성" class="btn-lg my-custom-button" aria-current="page">
             글 작성하기
           </button>
         </li>
@@ -34,7 +34,7 @@
 <script>
 import { onMounted } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { mapState } from "vuex";
+import { mapState,mapMutations } from "vuex";
 
 export default {
   name: 'YourComponentName',
@@ -48,6 +48,9 @@ export default {
   },
   computed : {
     ...mapState(['userInfo'])
+  },
+  methods : {
+    ...mapMutations(['set글작성'])
   }
 };
 </script>

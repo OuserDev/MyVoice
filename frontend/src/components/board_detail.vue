@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="resume-section-content text-center">
-      <h1 class="display-2">{{ 선택한게시물.title }}</h1>
+      <h1 class="display-5">{{ 선택한게시물.title }}</h1>
       <div class="mb-5 mt-3">
         작성자 <span class="fw-bold mx-1">{{ 선택한게시물.writer }}</span> · 조회수<span
           class="fw-bold mx-1"
@@ -26,6 +26,26 @@ import { mapActions, mapMutations, mapState } from "vuex";
 import board from "../components/board.vue";
 
 export default {
+  setup() {
+    const successToast = () => {
+      createToast(
+        {
+          title: "글을 삭제하였습니다.",
+          description: "",
+        },
+        {
+          position: "top-right",
+          type: "success",
+          transition: "bounce",
+          timeout: 3000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    return { successToast };
+  },
   components: {
     board,
   },

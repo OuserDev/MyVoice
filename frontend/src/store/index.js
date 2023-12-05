@@ -12,7 +12,7 @@ export default createStore({
       boardList: [],
       보이스셋리스트: [],
       선택한카드: "",
-      viewStatus: 2,
+      viewStatus: 0,
       선택한게시물: {},
       업로드한음원: "",
       fileName: "",
@@ -95,6 +95,9 @@ export default createStore({
     },
     로그인초기화(state) {
       state.userInfo = {};
+    },
+    set글작성(state) {
+      state.viewStatus = 2;
     }
 },
   actions: {

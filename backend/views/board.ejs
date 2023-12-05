@@ -1,0 +1,10 @@
+<h1>게시판</h1>
+<ul>
+    <% boards.forEach(board => { %>
+        <li>DB</li>
+        <li>제목:<%= board.title %></li>
+        <li>본문:<%= board.content %></li>
+        <li>글쓴이:<%= board.writer %></li>
+        <li>첨부파일:<%= board.file_src %></li> <!-- 각 게시물의 제목 표시 -->
+    <% }); %>
+</ul>

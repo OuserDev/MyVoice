@@ -1,7 +1,20 @@
 {
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "nodemon": "^3.0.2"
+  },
+  "name": "my_voice",
+  "description": "![logo](https://github.com/OuserDev/MyVoice/assets/141126078/b3ca788e-f9e5-4ac2-8131-eec49b359fb9)\r > **2023 ANU 콘텐츠 캡스톤디자인 팀 프로젝트**<br>\r <br>**사용자 맞춤형 AI 음성 변환 웹 사이트**",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
     "doenv": "^16.3.1",
     "js-file-downloadt": "^0.4.12",
     "vue-spinner": "^1.0.4"
-  }
 }

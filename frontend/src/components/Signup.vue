@@ -90,12 +90,21 @@ export default {
         if (error.response) {
           // 서버로부터 응답을 받았지만 에러 상태 코드가 있는 경우
           const statusCode = error.response.status;
+<<<<<<< HEAD
           if (statusCode === 400) {
             this.errorToast("이미 사용 중인 아이디 입니다.");
           } else if (statusCode === 401) {
             this.errorToast("아이디나 비밀번호가 일치하지 않습니다");
           } else {
             this.errorToast("검증 비밀번호가 일치하지 않습니다");
+=======
+          if (statusCode === 409) {
+            this.errorToast("이미 사용 중인 아이디입니다.");
+          } else if (statusCode === 401) {
+            this.errorToast("로그인에 실패하였습니다 (오류코드 : 세션 미생성) ");
+          } else {
+            this.errorToast("사용자의 아이디가 없습니다.");
+>>>>>>> backend-tae
           }
         } else if (error.request) {
           // 요청이 이루어졌으나 응답을 받지 못한 경우

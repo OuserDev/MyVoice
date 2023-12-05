@@ -1,0 +1,7 @@
+<h1>게시판</h1>
+<ul>
+    <% boards.forEach(board => { %>
+        <li><%= board.title %></li>
+        <li><%= board.file_src %></li> <!-- 각 게시물의 제목 표시 -->
+    <% }); %>
+</ul>

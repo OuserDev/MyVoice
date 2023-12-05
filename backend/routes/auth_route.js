@@ -1,9 +1,11 @@
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const mysql = require('mysql2/promise');
 const db = require('../server/models/database');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html')); // 'index.html' 파일의 경로를 설정하세요.
@@ -30,7 +32,7 @@ router.post('/register', async (req, res) => {
         if (password !== passwordReconfirm) {
             return res.status(409).send({ message: '검증 비밀번호가 일치하지 않습니다' });
         }
-
+        
         // 비밀번호 해시
         let hashedPassword;
         try {
@@ -78,7 +80,7 @@ router.post('/login', async (req, res) => {
         const [users] = await db.query(query, [username]);
 
         if (users.length === 0) {
-            res.status(409).send({ message: '존재하지 않는 사용자입니다.' });
+            res.status(401).send({ message: '존재하지 않는 사용자입니다.' });
             return;
         }
         
@@ -102,6 +104,7 @@ router.post('/login', async (req, res) => {
         console.error(err);
         res.status(500).send('Server error');
     }
+
 });
 
 

@@ -43,7 +43,7 @@
       createToast(
         {
           title: "글작성 성공!",
-          description: "제목: "+this.title,
+          description: "바른 인터넷 문화 캠페인에 동참합시다."
         },
         {
           position: "top-right",
@@ -79,12 +79,14 @@
             content: this.content,
             writer: this.writer,
         }
+        console.log(postData)
         this.글작성전송(postData)
         .then(() => {
             console.log('글작성 성공');
             this.successToast();
         })
         .catch(error => {
+          console.log(error);
             this.errorToast();
         })
       }

@@ -12,10 +12,15 @@
           </div>
         </div>
 
-
         <div class="col-5" xyz="fade left-50%" v-else-if="viewStatus == 0">
           <div class="container-fluid sidebar d-flex align-items-center justify-content-center">
             <board />
+          </div>
+        </div>
+
+        <div class="col-5" xyz="fade left-50%" v-else-if="viewStatus == 2">
+          <div class="container-fluid sidebar d-flex align-items-center justify-content-center">
+            <board_write />
           </div>
         </div>
 
@@ -29,6 +34,7 @@
 import Sidebar from "../components/Sidebar.vue";
 import board from "../components/board.vue";
 import board_detail from "../components/board_detail.vue";
+import board_write from "../components/board_write.vue";
 import { mapMutations,mapState } from 'vuex'
 
 export default {
@@ -36,6 +42,7 @@ export default {
     Sidebar,
     board,
     board_detail,
+    board_write,
   },
   computed : {
     ...mapState(['viewStatus'])

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import board from "../components/board.vue";
 
 export default {
@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     ...mapMutations(["setViewStatus"]),
+    ...mapActions(["글삭제요청"]),
   },
 };
 </script>

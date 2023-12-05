@@ -47,7 +47,7 @@
                 <td class="fw-bold" @click="setViewStatus(post)">{{ post.title }}</td>
                 <td>{{ post.createdAt }}</td>
                 <td>{{ post.writer }}</td>
-                <td>{{ post.viewCount }}</td>
+                <td>{{ post.ViewCount }}</td>
               </tr>
             </tbody>
           </table>

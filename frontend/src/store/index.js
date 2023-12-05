@@ -12,7 +12,7 @@ export default createStore({
       boardList: [],
       보이스셋리스트: [],
       선택한카드: "",
-      viewStatus: 0,
+      viewStatus: 2,
       선택한게시물: {},
       업로드한음원: "",
       fileName: "",
@@ -76,7 +76,7 @@ export default createStore({
       console.log("선택:", state.선택한카드);
     },
     setViewStatus(state, post) {
-      if (state.viewStatus == 0) {
+      if (state.viewStatus == 0) { // 글목록에서 상세글로
         state.viewStatus = 1;
         state.선택한게시물 = post;
         console.log(post);
@@ -102,6 +102,7 @@ export default createStore({
       context.commit('로그인창열기');
       context.commit('로그인초기화');     
     },
+
     get보이스셋리스트(context) {
       // actions에서 commit을 사용할거면, context를 parameter로 받아야함
         axios
@@ -115,6 +116,7 @@ export default createStore({
           console.log("목소리 데이터셋 불러오기 실패");
         });
       },
+
     get게시물목록(context) {
       // actions에서 commit을 사용할거면, context를 parameter로 받아야함
         axios
@@ -154,6 +156,20 @@ export default createStore({
       //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
       .then(response => {
         context.commit('로그인창열기');
+      })
+      .catch(error => {
+        console.error('회원가입전송 오류',error);
+        context.commit('setViewStatus');
+        throw error;
+      });
+    },
+
+    글작성전송(context, postData) {
+      return axios
+      .post(`${process.env.VUE_APP_BACKEND_URL}/write`, postData)
+      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
+      .then(response => {
+        context.dispatch('get게시물목록');
       })
       .catch(error => {
         console.error('회원가입전송 오류',error);

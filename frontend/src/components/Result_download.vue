@@ -30,10 +30,10 @@
           <span class=" h3 fw-bold">[MyVoice_Result] {{선택한카드.voice_name}}_{{업로드한음원}}</span>
         </div>
         <div class="mt-5">
-          <button class="btn-lg fw-bold" @click="파일다운로드">클릭하면 다운로드 돼요!</button>
+          <button class="btn-lg fw-bold my-custom-button" @click="파일다운로드">클릭하면 다운로드 돼요!</button>
         </div>
         <div class="mt-3">
-          <router-link class="btn-lg" to="/">처음으로</router-link>
+          <router-link class="btn-lg my-custom-button" to="/">처음으로</router-link>
         </div>
       </div>    
 
@@ -77,7 +77,7 @@ export default {
       if (this.result === 0) {
         this.result = 1;
       }
-    }, 23000); // 3초(3000밀리초)마다 호출 // 3초(3000밀리초)마다 호출
+    }, 1000); // 3초(3000밀리초)마다 호출 // 3초(3000밀리초)마다 호출
   },
 };
 </script>

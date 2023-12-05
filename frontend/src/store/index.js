@@ -93,8 +93,15 @@ export default createStore({
       state.fileName = fileName;
       console.log(state.fileName);
     },
+    로그인초기화(state) {
+      state.userInfo = {};
+    }
 },
   actions: {
+    로그아웃(context) {
+      context.commit('로그인창열기');
+      context.commit('로그인초기화');     
+    },
     get보이스셋리스트(context) {
       // actions에서 commit을 사용할거면, context를 parameter로 받아야함
         axios
@@ -124,8 +131,8 @@ export default createStore({
       
     로그인전송(context, credentials) {
       return axios
-      .post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
-      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
+      //.post(`${process.env.VUE_APP_BACKEND_URL}/auth/login`, credentials)
+      .post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
       .then(response => {
         const userInfo = response.data.user;
         context.commit('setLoginState', document.cookie.includes('sessionId'));

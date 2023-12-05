@@ -1,47 +1,34 @@
 <template>
   <main class="d-flex">
   <div class="b-example-divider b-example-vr"></div>
+
   <div class="pt-5 px-5 d-flex flex-column flex-shrink-0 bg-body-tertiary z-1" style="width: 400px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <div class="pt-5">
-        <div class="fs-4 text-start">어서오세요,</div>
-        <div class="fs-3 text-start fw-bold">{{ userInfo.username }}<span class="fs-5 fw-normal">님!</span></div>
-      </div>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active fw-bold" aria-current="page">
-          글 작성하기
-        </a>
-      </li>
-      <!-- <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#writer"/></svg>
-          Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-body-emphasis">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Customers
-        </a>
-      </li> -->
-    </ul>
-    <hr>
-  </div>
+
+
+    <div v-if="Object.keys(this.userInfo).length === 0">
+      로그인 ㄱ
+    </div>
+
+    <div v-else>
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <div class="pt-5">
+          <div class="fs-4 text-start">어서오세요,</div>
+          <div class="fs-3 text-start fw-bold">{{ userInfo.username }}<span class="fs-5 fw-normal">님!</span></div>
+        </div>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link active fw-bold" aria-current="page">
+            글 작성하기
+          </a>
+        </li>
+      </ul>
+      <hr>
+    </div>
+    
+</div>
+
   <div class="b-example-divider b-example-vr"></div>
 </main>
 </template>

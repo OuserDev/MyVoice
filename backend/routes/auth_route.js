@@ -15,6 +15,7 @@ router.post('/register', async (req, res) => {
 
         const username = req.body.username;
         const password = req.body.password;
+        const passwordReconfirm = req.body.passwordReconfirm;
         const email = req.body.email;
 
         // 아이디 중복확인
@@ -22,9 +23,14 @@ router.post('/register', async (req, res) => {
         const [existingUsers] = await db.execute(checkUserQuery, [username]);
 
         if (existingUsers.length > 0) {
-            return res.status(409).send('이미 존재하는 사용자 이름입니다.'); // 중복된 사용자 이름
+            return res.status(400).send('이미 존재하는 사용자 이름입니다.'); // 중복된 사용자 이름
         }
         
+        // 비밀번호 재확인 검증
+        if (password !== passwordReconfirm) {
+            return res.status(409).send({ message: '검증 비밀번호가 일치하지 않습니다' });
+        }
+
         // 비밀번호 해시
         let hashedPassword;
         try {
@@ -72,7 +78,7 @@ router.post('/login', async (req, res) => {
         const [users] = await db.query(query, [username]);
 
         if (users.length === 0) {
-            res.status(401).send({ message: '존재하지 않는 사용자입니다.' });
+            res.status(409).send({ message: '존재하지 않는 사용자입니다.' });
             return;
         }
         
@@ -87,9 +93,10 @@ router.post('/login', async (req, res) => {
             // 클라이언트에 성공 응답 전송
             data = { user }
             res.status(200).send(data);
+            console.log(data)
         } else {
             // 로그인 실패 처리
-            return res.status(401).send('Invalid username or password');
+            return res.status(401).send('비밀번호가 일치하지 않습니다. ');
         }
     } catch (err) {
         console.error(err);

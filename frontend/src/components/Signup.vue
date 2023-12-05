@@ -80,7 +80,7 @@ export default {
         email: this.email
       };
       this.회원가입전송(userData)
-
+      
       .then(() => {
         console.log('회원가입 성공');
         this.successToast();

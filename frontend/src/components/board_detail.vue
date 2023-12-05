@@ -17,7 +17,7 @@
     <hr class="featurette-divider">
     <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="setViewStatus">글 수정</button>
     <button class="mt-5 btn-lg my-custom-button" @click="setViewStatus">글 목록</button>
-    <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="글삭제요청(선택한게시물.id)">글 삭제</button>
+    <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="삭제하고함수실행(선택한게시물.id)">글 삭제</button>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
       createToast(
         {
           title: "글을 삭제하였습니다.",
-          description: "",
+          description: "바른 인터넷 문화 캠페인에 동참합시다.",
         },
         {
           position: "top-right",
@@ -55,6 +55,14 @@ export default {
   methods: {
     ...mapMutations(["setViewStatus"]),
     ...mapActions(["글삭제요청"]),
+    async 삭제하고함수실행(post_id) {
+      try {
+        await this.글삭제요청(post_id);
+        this.successToast(); // 성공 시 실행할 함수
+      } catch (error) {
+        console.error('삭제 실패:', error);
+      }
+    },
   },
 };
 </script>

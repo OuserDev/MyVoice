@@ -141,10 +141,8 @@ export default createStore({
       //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/login`, credentials)
       .then(response => {
         const userInfo = response.data.user;
-        context.commit('setLoginState', document.cookie.includes('sessionId'));
-        console.log('setLoginState:', context.state.isLoggedIn);
+        context.commit('setLoginState', true);
         context.commit('setUserInfo', userInfo);
-        console.log('setUserInfo:', context.state.userInfo);
         return userInfo;
       })
       .catch(error => {
@@ -181,15 +179,19 @@ export default createStore({
     },
 
     글삭제요청(context, post_id) {
-      return axios
-      .delete(`${process.env.VUE_APP_BACKEND_URL}/board/delete/${post_id}`)
-      .then(response => {
-        context.dispatch('get게시물목록');
-        context.commit('setViewStatus');
-      })
-      .catch(error => {
-        console.log('못삭제했노')
-      })
+      return new Promise((resolve, reject) => {
+        axios
+          .delete(`${process.env.VUE_APP_BACKEND_URL}/board/delete/${post_id}`)
+          .then(response => {
+            context.dispatch('get게시물목록');
+            context.commit('setViewStatus');
+            resolve(response);
+          })
+          .catch(error => {
+            console.log('못삭제했노');
+            reject(error);
+          });
+      });
     },
 
     파일다운로드(context) {

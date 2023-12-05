@@ -1,24 +1,24 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <Sidebar />
       </div>
       <XyzTransition appear mode="out-in">
 
-        <div class="col-5" xyz="fade left-50%" v-if="viewStatus == 1">
+        <div class="col-7" xyz="fade left-50%" v-if="viewStatus == 1">
           <div class="container-fluid sidebar d-flex align-items-center justify-content-center">
             <board_detail />
           </div>
         </div>
 
-        <div class="col-5" xyz="fade left-50%" v-else-if="viewStatus == 0">
+        <div class="col-7" xyz="fade left-50%" v-else-if="viewStatus == 0">
           <div class="container-fluid sidebar d-flex align-items-center justify-content-center">
             <board />
           </div>
         </div>
 
-        <div class="col-5" xyz="fade left-50%" v-else-if="viewStatus == 2">
+        <div class="col-7" xyz="fade left-50%" v-else-if="viewStatus == 2">
           <div class="container-fluid sidebar d-flex align-items-center justify-content-center">
             <board_write />
           </div>

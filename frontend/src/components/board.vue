@@ -37,7 +37,7 @@
                 <th scope="col" class="th-num">글번호</th>
                 <th scope="col" class="th-title">제목</th>
                 <th scope="col" class="th-date">등록일</th>
-                <th scope="col" class="th-date">작성자</th>
+                <th scope="col" class="th-date col-md-3">작성자</th>
                 <th scope="col" class="th-num">조회수</th>
               </tr>
             </thead>
@@ -62,7 +62,6 @@
                 </a>
               </li>
               <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>

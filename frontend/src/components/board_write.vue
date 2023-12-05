@@ -19,7 +19,7 @@
   <script>
   import { mapActions, mapMutations, mapState } from "vuex";
   import { createToast } from "mosha-vue-toastify";
-  
+
   export default {
     setup() {
     const errorToast = () => {

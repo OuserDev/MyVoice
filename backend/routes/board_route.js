@@ -11,7 +11,7 @@ router.post('/write', async (req, res) => {
       console.log(req.body)
       const title = req.body.title
       const content = req.body.content
-      const writer = req.session.username;
+      const writer = req.body.writer;
 
       // 데이터베이스에 게시글 저장
       const query = 'INSERT INTO board (title, content, writer) VALUES (?, ?, ?)';

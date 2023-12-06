@@ -84,12 +84,13 @@ router.put('/update/:id', async (req, res) => {
     // 게시글 수정 로직 : U
     // 특정 ID를 가진 게시글 조회 로직 : R
     try { 
-        console.log(req.body)
+        console.log(req);
+        console.log("응답: ",req.body)
         const title = req.body.title
         const content = req.body.content
-               
+
         const id = parseInt(req.params.id);
-        console.log(id)
+        console.log("id는 ",id)
         
         const query = "UPDATE board SET title = ?, content = ? WHERE id = ?";
         const results = await db.query(query, [title,content,id]);

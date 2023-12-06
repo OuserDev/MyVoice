@@ -31,7 +31,7 @@
           <div class="carousel-caption">
             <h1 class="fw-bold">색다른 경험을 시작해보세요!</h1>
             <p>AI RVC 모델을 통한 Deep-Learning 기술을 활용하였습니다.</p>
-            <p><a class="btn btn-lg btn-primary my-custom-button rounded" href="#">자세히 보기</a></p>
+            <p><router-link class="btn btn-lg btn-primary my-custom-button rounded" to="/community">자세히 보기</router-link></p>
           </div>
         </div>
       </div>
@@ -139,10 +139,11 @@ export default {
       interval: 2500,
       wrap: true
     });
+    this.convertStatus초기화();
   },
   methods : {
     ...mapActions(['test']),
-    ...mapMutations(['회원가입창열기'])
+    ...mapMutations(['회원가입창열기', 'convertStatus초기화'])
   }
 };
 </script>

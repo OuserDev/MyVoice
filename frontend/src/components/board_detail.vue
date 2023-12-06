@@ -5,7 +5,7 @@
       <div class="mb-5 mt-3">
         작성자 <span class="fw-bold mx-1">{{ 선택한게시물.writer }}</span> · 조회수<span
           class="fw-bold mx-1"
-          >{{ 선택한게시물.viewCount }}</span
+          >{{ 선택한게시물.ViewCount }}</span
         >
         · 작성일자<span class="fw-bold mx-2">{{ 선택한게시물.createdAt }}</span>
       </div>
@@ -15,7 +15,7 @@
       </p>
     </div>
     <hr class="featurette-divider">
-    <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="setViewStatus">글 수정</button>
+    <!-- <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="set글수정">글 수정</button> -->
     <button class="mt-5 btn-lg my-custom-button" @click="setViewStatus">글 목록</button>
     <button class="mt-5 mx-3 btn-lg my-custom-button" v-if="userInfo.username == 선택한게시물.writer" @click="삭제하고함수실행(선택한게시물.id)">글 삭제</button>
   </div>
@@ -24,6 +24,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
 import board from "../components/board.vue";
+import { createToast } from "mosha-vue-toastify";
 
 export default {
   setup() {
@@ -53,7 +54,7 @@ export default {
     ...mapState(["viewStatus", "선택한게시물", "userInfo"]),
   },
   methods: {
-    ...mapMutations(["setViewStatus"]),
+    ...mapMutations(["setViewStatus", 'set글수정']),
     ...mapActions(["글삭제요청"]),
     async 삭제하고함수실행(post_id) {
       try {

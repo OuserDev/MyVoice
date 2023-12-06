@@ -27,7 +27,7 @@
           <div v-else-if= "isUserInfoFilled(userInfo) === true">
             <span class="text-black h3">환영합니다, <span class="fw-bold">{{ userInfo.username }}</span>님!</span>
             <br>
-            <button type="submit" @click="로그아웃()">logout</button>
+            <button @click="로갓하고함수실행()">logout</button>
           </div>
       </div>
     </div>
@@ -77,7 +77,24 @@ export default {
         }
       );
     };
-    return { errorToast, successToast };
+    const logoutToast = () => {
+      createToast(
+        {
+          title: "로그아웃 성공!",
+          description: "이용해주셔서 감사합니다 :D",
+        },
+        {
+          position: "top-right",
+          type: "success",
+          transition: "bounce",
+          timeout: 3000,
+          showCloseButton: true,
+          swipeClose: true,
+          showIcon: true,
+        }
+      );
+    };
+    return { errorToast, successToast, logoutToast };
   },
   components: {},
   computed : {
@@ -129,7 +146,15 @@ export default {
       }
       // 객체의 모든 키에 대해 값이 truthy인지 확인한다.
       return Object.keys(obj).every(key => obj[key]);
-    }
+    },
+    async 로갓하고함수실행() {
+      try {
+        await this.로그아웃();
+        this.logoutToast(); // 성공 시 실행할 함수
+      } catch (error) {
+        console.error('삭제 실패:', error);
+      }
+    },
   },
 };
 </script>

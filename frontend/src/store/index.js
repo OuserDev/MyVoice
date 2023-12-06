@@ -98,7 +98,13 @@ export default createStore({
     },
     set글작성(state) {
       state.viewStatus = 2;
-    }
+    },
+    convertStatus초기화(state) {
+      state.convert_status = 1;
+    },
+    set글수정(state) {
+      state.viewStatus = 3;
+    },
 },
   actions: {
     로그아웃(context) {
@@ -174,6 +180,25 @@ export default createStore({
       })
       .catch(error => {
         console.error('글작성 오류',error);
+        throw error;
+      });
+    },
+
+    글수정전송(context, post_id, postData) {
+      return axios
+      .put(`${process.env.VUE_APP_BACKEND_URL}/board/update/${post_id}`, postData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      })
+      //.post(`https://19b4a6d6-f894-4563-a86c-2d6760ce7a2d.mock.pstmn.io/auth/register`, userData)
+      .then(response => {
+        console.log("요청은 감")
+        context.dispatch('get게시물목록');
+        context.commit('setViewStatus');
+      })
+      .catch(error => {
+        console.error('글수정 오류',error);
         throw error;
       });
     },

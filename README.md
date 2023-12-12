@@ -30,3 +30,6 @@
   
 ## Main Page
 ![image](https://github.com/OuserDev/MyVoice/assets/141126078/2765e622-d470-4783-939e-b43f59049dc1)
+
+## Reference
+[체육부장권건표 스토리보드등 추가.pptx](https://github.com/OuserDev/MyVoice/files/13650646/default.pptx)

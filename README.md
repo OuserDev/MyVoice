@@ -25,6 +25,8 @@
 사용자가 **원하는 목소리로 다양한 음원을 변환**하여 개인화된 청취 경험 및 콘텐츠 제작의 새로운 기회를 제공하는 웹 플랫폼
 
 ## Usage
+1. 의존성 설치를 위해 루트 디렉토리 / frontend / backend 폴더 세 군데에서 각각 ```npm install``` 수행
+2. 
 - Frontend 디렉토리에서 ```npm run serve``` (8080 Port)
 - Backend 디렉토리에서 ```npm run start``` (3000 Port)
   

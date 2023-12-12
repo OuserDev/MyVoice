@@ -10,7 +10,7 @@
 - 최태용 (Back-end 개발)
 - 김선혁 (Front-end 개발)
 
-## 사용한 기술 스택
+## Stacks & Tools
 - Node.js
 - Vue.js
 - Express.js

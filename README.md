@@ -4,17 +4,20 @@
 <br>**사용자 맞춤형 AI 음성 변환 웹 사이트**
 
 ## Developer
-- 손 다 윤 (여자이름 아님)
-- Castle.gay "GUCCI GUCCI"
-- sUCKDICk. *Drag0nz*
-- Xes - kXng - Gun (봄이 집사)
-- and...
-**AlphaMale KSH**
-```
-HAHAHAHAHAHA
-```
+- 손다윤
+- 윤성건
+- 권건표
+- 최태용
+- 김선혁
 
 ## 사용한 기술 스택
+Vue.js
+Node.js
+MYSQL
+Express.js
+Bootstrap
+FastAPI
+Tensorflow
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

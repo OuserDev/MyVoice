@@ -1,7 +1,7 @@
 # MyVoice
 ![logo](https://github.com/OuserDev/MyVoice/assets/141126078/b3ca788e-f9e5-4ac2-8131-eec49b359fb9)
 ### **사용자 맞춤형 AI 음성 변환 웹 사이트**
-**2023 ANU 콘텐츠 캡스톤디자인 팀 프로젝트**
+**2023-2 ANU 콘텐츠 캡스톤디자인 팀 프로젝트**
 
 ## Developer
 - 손다윤 (팀장, PM, 기획, UI/UX 디자인)
